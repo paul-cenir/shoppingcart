@@ -7,11 +7,13 @@ import {CryptoService} from "./services/crypto.service";
 import {AuthService} from "./services/auth.service";
 import {AuthGuardService} from "./services/auth-guard.service";
 import {LoginGuardService} from "./services/login-guard.service";
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule(
     {
         imports: [],
-        declarations: [],
+        declarations: [HeaderComponent, FooterComponent],
         providers: [
             AuthService,
             CryptoService,

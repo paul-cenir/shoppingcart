@@ -7,6 +7,7 @@ import { HomepageComponent } from './modules/homepage/homepage.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
+import { AuthGuardService } from './core/services/auth-guard.service';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { FooterComponent } from './core/footer/footer.component';
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [AuthGuardService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

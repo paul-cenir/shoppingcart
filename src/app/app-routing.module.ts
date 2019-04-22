@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomepageComponent } from './modules/homepage/homepage.component';
+import { AuthGuardService as AuthGuard  } from './core/services/auth-guard.service';
+
 const routes: Routes = [
   {
     path: '', redirectTo: 'homepage', pathMatch: 'full'
@@ -10,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'login-signup', 
-    loadChildren: './modules/login-signup/login-signup.module#LoginSignupModule'
+    loadChildren: './modules/login-signup/login-signup.module#LoginSignupModule',canActivate: [AuthGuard] 
   },
   {
     path: 'product-details-page', 

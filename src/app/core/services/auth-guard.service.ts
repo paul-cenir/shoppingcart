@@ -3,11 +3,11 @@ import { catchError, mergeMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { AuthService } from './auth.service';
+// import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthGuardService implements CanActivate {
-    constructor(private AuthService: AuthService) {}
+    constructor(/*private AuthService: AuthService*/) {}
 
     /**
      * Implemented from CanActivate interface. Checks whether a certain url can be accessed
@@ -16,6 +16,9 @@ export class AuthGuardService implements CanActivate {
      * @returns {boolean}
      */
     canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
+
+        return of(false);//test only checking if working
+
         let is_authenticated = this.AuthService.isAuthenticated();
         // used to check if route is required login
         let require_login = typeof router.data['require_login'] != 'undefined' ? router.data['require_login'] : false;

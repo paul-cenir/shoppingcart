@@ -1,26 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomepageComponent } from './modules/homepage/homepage.component';
-import { AuthGuardService as AuthGuard  } from './core/services/auth-guard.service';
+
+import { LoginGuardService as LoginGuard } from './core/services/login-guard.service';
 
 const routes: Routes = [
-  {
-    path: '', redirectTo: 'homepage', pathMatch: 'full'
-  },
-  {
-    path: 'homepage', component: HomepageComponent
-  },
-  {
-    path: 'login-signup', 
-    loadChildren: './modules/login-signup/login-signup.module#LoginSignupModule',canActivate: [AuthGuard] 
-  },
-  {
-    path: 'product-details-page', 
-    loadChildren: './modules/product-details-page/product-details-page.module#ProductDetailsPageModule'
-  }
+    {
+        path: '', redirectTo: 'homepage', pathMatch: 'full'
+    },
+    {
+        path: 'homepage',
+        loadChildren: './modules/home-page/home-page.module#HomePageModule'
+    },
+    {
+        path: 'login-signup',
+        loadChildren: './modules/login-signup/login-signup.module#LoginSignupModule'
+    },
+    {
+        path: 'product-details-page',
+        loadChildren: './modules/product-details-page/product-details-page.module#ProductDetailsPageModule', canActivate: [LoginGuard]
+    }
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

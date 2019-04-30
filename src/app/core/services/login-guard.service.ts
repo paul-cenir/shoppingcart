@@ -1,3 +1,4 @@
+
 /**
  * Created by prince.g on 6/17/2017.
  */
@@ -6,14 +7,16 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { of, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
+
 @Injectable()
 export class LoginGuardService implements CanActivate {
-    constructor(private AuthService: AuthService, private Router: Router) {}
+
+    // tslint:disable-next-line:no-shadowed-variable
+    constructor(private AuthService: AuthService, private Router: Router) { }
 
     canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
-        let is_authenticated = this.AuthService.isAuthenticated();
-
-        if (!is_authenticated) {
+        const isAuthenticated = this.AuthService.isLogged();
+        if (!isAuthenticated) {
             // if user is not logged in
             // return true
             return of(true);

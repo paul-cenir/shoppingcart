@@ -1,13 +1,13 @@
-import { LoginSignupComponent } from './login-signup/login-signup.component';
+import { HomePageComponent } from './home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-    { path: '', component: LoginSignupComponent }
+    { path: '', component: HomePageComponent }
 ];
 
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class LoginSignupRoutingModule { }
+export class HomePageRoutingModule { }

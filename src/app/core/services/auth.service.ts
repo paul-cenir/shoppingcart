@@ -16,7 +16,7 @@ export class AuthService {
         const accessToken = localStorage.getItem('token');
 
         if (!accessToken) {
-            return true;
+            return accessToken;
         }
     }
 }

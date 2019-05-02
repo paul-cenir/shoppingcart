@@ -1,3 +1,13 @@
-<p>
-  product-details works!
-</p>
+<div *ngIf="product">
+    <h2>{{product.product_name | uppercase}} Details</h2>
+    <div><span>id: </span>{{product.product_id}}</div>
+    <div>
+        <label>name:
+            <input [(ngModel)]="product.product_name" placeholder="name" />
+        </label>
+    </div>
+    <div>
+        <img [src]="product.product_image" alt="">
+    </div>
+
+</div>

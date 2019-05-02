@@ -1,114 +1,42 @@
-// import {HttpInterceptor} from "@angular/common/http";
-// import {Injectable} from '@angular/core';
-// import {AuthService} from "@dri/auth/services/auth.service";
-// import {ConfigManagerService} from "@dri/common/services/config-manager.service";
-// import {UrlService} from "@dri/common/services/url.service";
-// import {Observable, throwError} from "rxjs";
-// import {HttpEvent} from "@angular/common/http";
-// import {HttpHandler} from "@angular/common/http";
-// import {HttpRequest} from "@angular/common/http";
-// import {HttpResponse} from "@angular/common/http";
-// import {HttpErrorResponse} from "@angular/common/http";
-// import {map, catchError, mergeMap} from "rxjs/operators";
-// import {Router} from "@angular/router";
+import { Injectable } from '@angular/core';
+import {
+    HttpEvent, HttpInterceptor, HttpHandler, HttpRequest
+} from '@angular/common/http';
 
-// @Injectable()
-// export class AuthHttpInterceptor implements HttpInterceptor {
+import { AuthService } from '../services/auth.service';
 
-//     constructor(private AuthService: AuthService, private ConfigManagerService: ConfigManagerService,
-//                 private UrlService: UrlService, private Router: Router) {
-//     }
+import { Observable, of, throwError } from 'rxjs';
+@Injectable()
+export class AuthHttpInterceptor implements HttpInterceptor {
 
-//     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    constructor(private auth: AuthService) { }
 
-//         // if not authenticated and there is a refresh token,
-//         // try to refresh token first then perform the request
-//         const refToken = this.AuthService.getRefreshToken();
-//         if (!this.AuthService.isAuthenticated() && refToken) {
-//             return this.AuthService.refreshAccessToken().pipe(
-//                 mergeMap((res: any) => {
-//                     // save access token
-//                     this.AuthService.setAccessToken(
-//                         res.access_token,
-//                         res.expires_in
-//                     );
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        // Get the auth token from the service.
+        const authToken = this.auth.isLogged();
+     
+        /*
+        * The verbose way:
+        // Clone the request and replace the original headers with
+        // cloned headers, updated with the authorization.
+        const authReq = req.clone({
+          headers: req.headers.set('Authorization', authToken)
+        });
+        */
+        // Clone the request and set the new header in one step.
+        console.log(authToken);
+        var token: string = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJleGFtcGxlLm9yZyIsImF1ZCI6ImV4YW1wbGUuY29tIiwiaWF0IjoxNTU2NzY0NTg2LCJuYmYiOjE1NTY3NjQ1ODYsImV4cCI6MTU1Njc2ODE4NiwiZGF0YSI6eyJjdXN0b21lcl9pZCI6IjQiLCJmaXJzdF9uYW1lIjoiUGF1bCBDZW5pciIsImxhc3RfbmFtZSI6IkNlbmlyIn19.mnXiOZxkG7xDDacHnjBxcJZbc_NsOJRDXquWv6lEN-yX9GLfIEe5re6LkMshv_4LQcNiEh6WytuDWhrgxEm_f1XPn6Os1kPI472LGT41V4Xkm_Q0l52B4sNraDh_bv3zXkLORJLBkd1htenIs_ROCicLI0-i3-O1FuwMUHls8Ww';
+        const authReq = req.clone({ setHeaders: { Authorization: 'Bearer ' + token} });
+        // send cloned request with header to the next handler.
+        return next.handle(authReq);
+    }
+}
 
-//                     // append Authorization Header
-//                     let req = this.appendAuthHeaders(request);
 
-//                     // execute request
-//                     return next.handle(req);
-//                 }),
-//                 catchError((error: any) => {
-//                     // continue executing request
-//                     return next.handle(request);
-//                 })
-//             );
-//         }
 
-//         // if still authenticated, continue
-//         request = this.appendAuthHeaders(request);
-//         return next
-//             .handle(request).pipe(
-//                 map((event: HttpEvent<any>) => {
-//                     if (event instanceof HttpResponse) {
-//                         return event;
-//                     }
-//                 }),
-//                 catchError((error: any) => {
-//                     // if server responds 401 or 403 status, try to refresh token
-//                     if (error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)) {
-//                         if (refToken) {
-//                             return this.AuthService.refreshAccessToken().pipe(
-//                                 mergeMap((res: any) => {
-//                                     this.AuthService.setAccessToken(
-//                                         res.access_token,
-//                                         res.expires_in
-//                                     );
-//                                     let req = this.appendAuthHeaders(request);
-//                                     return next.handle(req);
-//                                 }),
-//                                 catchError((error: any) => {
-//                                     if (error.status === 401) {
-//                                         this.requireLogin();
-//                                     }
-//                                     return throwError(error);
-//                                 })
-//                             );
-//                         }
 
-//                         if (error.status === 401) {
-//                             this.requireLogin();
-//                         }
-//                     }
-                        
-//                     return throwError(error);
-//                 })
-//             );
-
-//     }
-
-//     private requireLogin() {
-//         const state = this.Router.routerState.snapshot;
-
-//         if (!state.url.match(/\/customer\/login/g)) {
-//             this.AuthService.clearCredentials();
-//             this.AuthService.requireLogin.next({
-//                 url: state.url
-//             });
-//         }
-//     }
-
-//     private appendAuthHeaders(request) {
-//         if (this.AuthService.getAccessToken()) {
-//             let req = request.clone({
-//                 setHeaders: {
-//                     Authorization: `Bearer ${this.AuthService.getAccessToken()}`
-//                 }
-//             });
-//             return req;
-//         }
-
-//         return request;
-//     }
-// }
+/*
+Copyright 2017-2018 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

@@ -1,7 +1,9 @@
+import { AuthGuardService } from './core/services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginGuardService as LoginGuard } from './core/services/login-guard.service';
+
 
 const routes: Routes = [
     {
@@ -13,11 +15,11 @@ const routes: Routes = [
     },
     {
         path: 'login-signup',
-        loadChildren: './modules/login-signup/login-signup.module#LoginSignupModule'
+        loadChildren: './modules/login-signup/login-signup.module#LoginSignupModule', canActivate: [LoginGuard]
     },
     {
-        path: 'product-details-page',
-        loadChildren: './modules/product-details-page/product-details-page.module#ProductDetailsPageModule', canActivate: [LoginGuard]
+        path: 'product-details/:id',
+        loadChildren: './modules/product-details-page/product-details-page.module#ProductDetailsPageModule'
     }
 ];
 @NgModule({

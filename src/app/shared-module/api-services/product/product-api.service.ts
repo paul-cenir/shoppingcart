@@ -30,7 +30,12 @@ export class ProductApiService {
     }
 
     getProduct(id: number): Observable<Product> {
-        return this.http.get<Product>(`${environment.apiUrl}/${id}`);
+        return this.http.get<Product>(`${environment.apiUrl}product/${id}`) .pipe(
+            catchError(err => {
+                console.log('Handling error locally and rethrowing it...', err);
+                return throwError(err);
+            })
+        );
     }
 
 }

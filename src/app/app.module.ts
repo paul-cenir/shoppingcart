@@ -9,18 +9,20 @@ import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor } from './core/interceptors/auth-http.interceptor';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        HeaderComponent,
-        FooterComponent
+        // HeaderComponent,
+        // FooterComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        CoreModule
     ],
     providers: [AuthService, LoginGuardService,
         // { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true }

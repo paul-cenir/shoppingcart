@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../../shared-module/api-services/product/product';
-import { ProductApiService } from '../../../shared-module/api-services/product/product-api.service';
+import { Product } from '../../shared-module/models/product';
+import { ProductApiService } from '../../shared-module/services/product-api.service';
 @Component({
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',

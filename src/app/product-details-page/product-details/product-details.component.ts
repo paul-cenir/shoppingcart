@@ -1,5 +1,5 @@
-import { ProductApiService } from './../../../shared-module/api-services/product/product-api.service';
-import { Product } from './../../../shared-module/api-services/product/product';
+import { ProductApiService } from '../../shared-module/services/product-api.service';
+import { Product } from '../../shared-module/models/product';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';

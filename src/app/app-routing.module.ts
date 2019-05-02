@@ -11,15 +11,15 @@ const routes: Routes = [
     },
     {
         path: 'homepage',
-        loadChildren: './modules/home-page/home-page.module#HomePageModule'
+        loadChildren: './home-page/home-page.module#HomePageModule'
     },
     {
         path: 'login-signup',
-        loadChildren: './modules/login-signup/login-signup.module#LoginSignupModule', canActivate: [LoginGuard]
+        loadChildren: './login-signup/login-signup.module#LoginSignupModule', canActivate: [LoginGuard]
     },
     {
         path: 'product-details/:id',
-        loadChildren: './modules/product-details-page/product-details-page.module#ProductDetailsPageModule'
+        loadChildren: './product-details-page/product-details-page.module#ProductDetailsPageModule'
     }
 ];
 @NgModule({

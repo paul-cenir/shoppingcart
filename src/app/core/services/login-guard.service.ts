@@ -15,7 +15,7 @@ export class LoginGuardService implements CanActivate {
     constructor(private AuthService: AuthService, private Router: Router) { }
 
     canActivate(router: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> {
-        const isAuthenticated = this.AuthService.isLogged();
+        const isAuthenticated = this.AuthService.isLoggedIn();
         if (!isAuthenticated) {
             // if user is not logged in
             // return true

@@ -19,7 +19,7 @@ const routes: Routes = [
     },
     {
         path: 'product-details/:id',
-        loadChildren: './product-details-page/product-details-page.module#ProductDetailsPageModule'
+        loadChildren: './product-details/product-details.module#ProductDetailsModule'
     }
 ];
 @NgModule({

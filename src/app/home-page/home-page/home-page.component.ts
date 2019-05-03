@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../shared-module/models/product';
-import { ProductApiService } from '../../shared-module/services/product-api.service';
+import { ProductService } from '../../shared-module/services/product.service';
 @Component({
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',
@@ -10,7 +10,7 @@ import { ProductApiService } from '../../shared-module/services/product-api.serv
 export class HomePageComponent implements OnInit {
 
     products: Product[];
-    constructor(private productApiService: ProductApiService) { }
+    constructor(private ProductService: ProductService) { }
 
     ngOnInit() {
         this.getProducts();
@@ -20,12 +20,12 @@ export class HomePageComponent implements OnInit {
     }
 
     getProducts(): void {
-        this.productApiService.getProducts()
+        this.ProductService.getProducts()
             .subscribe(products => this.products = products);
     }
 
     // test(): void  {
-    //   this.productApiService.
+    //   this.ProductService.
     //   .subscribe(heroes => this.heroes = heroes);
     // }
 }

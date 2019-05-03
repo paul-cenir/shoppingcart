@@ -13,7 +13,7 @@ const httpOptions = {
     providedIn: 'root'
 })
 
-export class ProductApiService {
+export class ProductService {
 
     constructor(private http: HttpClient) {
     }

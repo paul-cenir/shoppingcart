@@ -1,4 +1,4 @@
-import { ProductApiService } from '../../shared-module/services/product-api.service';
+import { ProductService } from '../../shared-module/services/product.service';
 import { Product } from '../../shared-module/models/product';
 
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +12,7 @@ export class ProductDetailsComponent implements OnInit {
     product: Product;
     constructor(
         // tslint:disable-next-line:no-shadowed-variable
-        private ProductApiService: ProductApiService,
+        private ProductService: ProductService,
         private route: ActivatedRoute,
     ) { }
 
@@ -22,7 +22,7 @@ export class ProductDetailsComponent implements OnInit {
 
     getProduct(): void {
         const id = +this.route.snapshot.paramMap.get('id');
-        this.ProductApiService.getProduct(id)
+        this.ProductService.getProduct(id)
             .subscribe(product => this.product = product);
     }
 

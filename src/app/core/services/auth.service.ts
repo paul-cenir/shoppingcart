@@ -1,3 +1,4 @@
+import { User } from './../../shared-module/models/user';
 
 import { Injectable } from '@angular/core';
 
@@ -8,15 +9,19 @@ const TOKEN = 'TOKEN';
 })
 export class AuthService {
 
-    setToken(token: string): void {
-        localStorage.setItem(TOKEN, token);
+    login(userinfo: User): void {
+        // localStorage.setItem(TOKEN, token);
+        localStorage.setItem('ACCESS_TOKEN', 'access_token');
     }
 
-    isLogged() {
-        const accessToken = localStorage.getItem('token');
+    isLoggedIn() {
+        const accessToken = localStorage.getItem('ACCESS_TOKEN');
 
         if (!accessToken) {
             return accessToken;
         }
+    }
+    public logout() {
+        localStorage.removeItem('ACCESS_TOKEN');
     }
 }

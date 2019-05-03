@@ -1,3 +1,4 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoginSignupRoutingModule } from './login-signup-routing.module';
@@ -9,7 +10,9 @@ import { RegistrationComponent } from './login-signup/registration/registration.
   declarations: [LoginComponent, LoginSignupComponent, RegistrationComponent],
   imports: [
     CommonModule,
-    LoginSignupRoutingModule
+    LoginSignupRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class LoginSignupModule { }

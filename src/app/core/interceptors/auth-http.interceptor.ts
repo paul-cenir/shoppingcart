@@ -13,7 +13,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // Get the auth token from the service.
-        const authToken = this.auth.isLogged();
+        const authToken = this.auth.isLoggedIn();
      
         /*
         * The verbose way:

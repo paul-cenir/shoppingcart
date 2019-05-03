@@ -1,7 +1,7 @@
-import { AuthGuardService } from './core/services/auth-guard.service';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { AuthGuardService as AuthGuard } from './core/services/auth-guard.service';
 import { LoginGuardService as LoginGuard } from './core/services/login-guard.service';
 
 
@@ -11,7 +11,7 @@ const routes: Routes = [
     },
     {
         path: 'homepage',
-        loadChildren: './home-page/home-page.module#HomePageModule'
+        loadChildren: './home-page/home-page.module#HomePageModule'/*, canActivate: [AuthGuard]*/
     },
     {
         path: 'login-signup',

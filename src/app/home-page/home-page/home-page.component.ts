@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/services/auth.service';
 
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../shared-module/models/product';
@@ -10,13 +11,10 @@ import { ProductService } from '../../shared-module/services/product.service';
 export class HomePageComponent implements OnInit {
 
     products: Product[];
-    constructor(private ProductService: ProductService) { }
+    constructor(private ProductService: ProductService, private AuthService: AuthService) { }
 
     ngOnInit() {
         this.getProducts();
-        // tslint:disable-next-line:max-line-length
-        var token: string = 'eyJpc3MiOiJleGFtcGxlLm9yZyIsImF1ZCI6ImV4YW1wbGUuY29tIiwiaWF0IjoxNTU2NzY0NTg2LCJuYmYiOjE1NTY3NjQ1ODYsImV4cCI6MTU1Njc2ODE4NiwiZGF0YSI6eyJjdXN0b21lcl9pZCI6IjQiLCJmaXJzdF9uYW1lIjoiUGF1bCBDZW5pciIsImxhc3RfbmFtZSI6IkNlbmlyIn19';
-        console.log(window.atob(token));
     }
 
     getProducts(): void {

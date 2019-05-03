@@ -1,6 +1,5 @@
-import { User } from './../../shared-module/models/user';
-
 import { Injectable } from '@angular/core';
+import { of, BehaviorSubject } from 'rxjs';
 
 const TOKEN = 'TOKEN';
 
@@ -9,19 +8,47 @@ const TOKEN = 'TOKEN';
 })
 export class AuthService {
 
-    login(userinfo: User): void {
-        // localStorage.setItem(TOKEN, token);
-        localStorage.setItem('ACCESS_TOKEN', 'access_token');
+    public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+    public setAccessToken(token): void {
+        localStorage.setItem('ACCESS_TOKEN', token);
     }
 
-    isLoggedIn() {
-        const accessToken = localStorage.getItem('ACCESS_TOKEN');
+    public getAccessToken() {
+        return localStorage.getItem('ACCESS_TOKEN');
+    }
 
+    public isLoggedIn() {
+        const accessToken = localStorage.getItem('ACCESS_TOKEN');
         if (!accessToken) {
             return accessToken;
         }
+        const data = this.parseAccessTokenData();
+        if (!data) {
+            return false;
+        }
+        return true;
     }
-    public logout() {
+
+    public deleteAccessToken() {
         localStorage.removeItem('ACCESS_TOKEN');
+        return of(true);
+    }
+
+    public parseAccessTokenData() {
+        const accessToken = this.getAccessToken();
+        if (!accessToken) {
+            return false;
+        }
+        const accessTokenData = accessToken.split('.');
+        if (!accessTokenData[1]) {
+            return false;
+        } else {
+            const tokenDecoded = JSON.parse(window.atob(accessTokenData[1]));
+            // need to add validation if access token is expired
+            if (!tokenDecoded.data.customer_id) {
+                return false;
+            }
+            return tokenDecoded;
+        }
     }
 }

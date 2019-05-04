@@ -49,7 +49,7 @@ export class RegistrationComponent implements OnInit {
                 result => {
                     // Handle result
                     this.notValidAccount = false;
-                    this.AuthService.setAccessToken(result.data);
+                    this.AuthService.setAccessToken(result['data']);
                     this.Router.navigateByUrl('/homepage');
                     this.AuthService.isUserLoggedIn.next(true);
                 },

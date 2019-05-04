@@ -1,3 +1,4 @@
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { ProductDetailsRoutingModule } from './product-details-routing.module';
@@ -9,7 +10,9 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
   declarations: [ProductDetailsComponent],
   imports: [
     ProductDetailsRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'}),
+    FormsModule
   ]
 })
 export class ProductDetailsModule { }

@@ -1,8 +1,20 @@
-<h2>Product</h2>
-<ul class="product">
-    <li *ngFor="let product of products">
-        <a routerLink="/product-details/{{product.product_id}}">
-            <span class="badge">{{product.product_id}}</span> {{product.product_name}}
-        </a>
-    </li>
-</ul>
+<div class="product" *ngIf="products">
+    <div routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products"
+        class="product-list-container">
+        <div class="produc-list-sub-contianer">
+            <img [src]="product.product_thumbnail" alt="">
+            <div class="product-details">
+                <div class="product-label">
+                    <p>Product Name</p>
+                    <p>Product Description</p>
+                    <p>Price</p>
+                </div>
+                <div  class="product-data">
+                    <p>{{product.product_name}}</p>
+                    <p>{{product.product_desc}}</p>
+                    <p>{{product.price}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

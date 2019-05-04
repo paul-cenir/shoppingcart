@@ -1,13 +1,36 @@
-<div *ngIf="product">
-    <h2>{{product.product_name | uppercase}} Details</h2>
-    <div><span>id: </span>{{product.product_id}}</div>
-    <div>
-        <label>name:
-            <input [(ngModel)]="product.product_name" placeholder="name" />
-        </label>
-    </div>
-    <div>
-        <img [src]="product.product_image" alt="">
-    </div>
+<div class="product" *ngIf="product">
+    <form [formGroup]="cartForm" (ngSubmit)="addCart()">
+        <div class="product-list-container">
+            <div class="produc-list-sub-contianer">
+                <img [src]="product.product_image" alt="">
+                <div class="product-details">
+                    <div class="product-label">
+                        <p>Product Name</p>
+                        <p>Product Description</p>
+                        <p>Unit Price</p>
+                        <div class="form-group quantity-min-height">
+                            <p>Quantity</p>
+                        </div>
+                        <p>Price</p>
+                    </div>
+                    <div class="product-data">
+                        <p>{{product.product_name}}</p>
+                        <p>{{product.product_desc}}</p>
+                        <p>{{product.price}}</p>
+                        <div class="form-group quantity-min-height" [ngClass]="{ 'has-error': isSubmitted && formControls.qty.errors }">
+                            <input type="number" name="quantity" class="form-control" formControlName="qty"  [(ngModel)]="productQuantity" 
+                                (ngModelChange)="quantityChanged($event)">
+                                <div *ngIf="isSubmitted && formControls.qty.errors" class="help-block">
+                                        <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
+                                        <div *ngIf="formControls.qty.errors.max">The quantity on inventory is not sufficient</div>
+                                    </div>
+                        </div>
+                        <p>{{ ConfigService.currencySign }} {{ price | number : ConfigService.priceFormat}}</p>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
 </div>

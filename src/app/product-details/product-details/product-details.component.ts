@@ -1,8 +1,11 @@
+import { Cart } from './../../shared-module/models/cart';
+import { ConfigService } from './../../shared-module/services/config.service';
 import { ProductService } from '../../shared-module/services/product.service';
 import { Product } from '../../shared-module/models/product';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/shared-module/services/cart.service';
 @Component({
     selector: 'app-product-details',
     templateUrl: './product-details.component.html',
@@ -10,20 +13,69 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductDetailsComponent implements OnInit {
     product: Product;
+    productQuantity = 1;
+    price: number;
     constructor(
         // tslint:disable-next-line:no-shadowed-variable
         private ProductService: ProductService,
-        private route: ActivatedRoute,
+        private Router: Router,
+        private ActivatedRoute: ActivatedRoute,
+        private FormBuilder: FormBuilder,
+        private ConfigService: ConfigService,
+        private CartService: CartService
     ) { }
-
+    cartForm: FormGroup;
+    isSubmitted = false;
     ngOnInit() {
         this.getProduct();
     }
-
     getProduct(): void {
-        const id = +this.route.snapshot.paramMap.get('id');
+        const id = +this.ActivatedRoute.snapshot.paramMap.get('id');
         this.ProductService.getProduct(id)
-            .subscribe(product => this.product = product);
+            .subscribe(result => {
+                this.product = result;
+                this.price = +this.computeTotalPrice();
+                this.addValidation();
+            });
+    }
+
+    addValidation() {
+        this.cartForm = this.FormBuilder.group({
+            qty: ['', [Validators.required, Validators.max(this.product['stock_qty'])]],
+            product_id: +[this.product['product_id']]
+        });
+    }
+    get formControls() { return this.cartForm.controls; }
+
+    public addCart(): void {
+        this.isSubmitted = true;
+        if (this.cartForm.invalid) {
+            return;
+        }
+        const cart: Cart = this.cartForm.value;
+        this.CartService.addCart(cart)
+            .subscribe(
+                result => {
+                    this.Router.navigateByUrl('/homepage');
+                },
+                error => {
+                    if (error.error.validation_error_messages) {
+                        // this.notValidAccount = true;
+                    }
+                }
+            );
+    }
+
+    quantityChanged() {
+        if (this.productQuantity === 0) {
+            this.productQuantity = 1;
+        }
+        this.price = +this.computeTotalPrice();
+    }
+
+    computeTotalPrice() {
+        const total = this.productQuantity * this.product.price;
+        return total.toFixed(2);
     }
 
 }

@@ -1,0 +1,44 @@
+<table class="table job-cart-table" *ngIf="tableData">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of tableData.cartItemData">
+            <td>
+                <div class="produc-list-sub-contianer">
+                    <img [src]="row.product_thumbnail" alt="Product image">
+                    <div class="product-details">
+                        <div class="product-label">
+                            <p>Product Name</p>
+                            <p>Product Description</p>
+                            <p>Price</p>
+                        </div>
+                        <div class="product-data">
+                            <p>{{row.product_name}}</p>
+                            <p>{{row.product_desc}}</p>
+                            <p> {{ ConfigService.currencySign }} {{ row.price | number : ConfigService.priceFormat}}</p>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>{{ row.qty }}</td>
+            <td>{{ row.sub_total }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>
+                <div>
+                    <div><p><span>Sub Total:</span>{{tableData.cartData.sub_total}}</p></div>
+                    <div><p><span>Shipping:</span>0.00</p></div>
+                    <div><p><span>Grand Total:</span>{{tableData.cartData.sub_total}}</p></div>
+                    <button type="submit" class="btn btn-primary">Checkout</button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

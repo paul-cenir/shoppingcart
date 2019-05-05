@@ -42,7 +42,8 @@ export class ProductDetailsComponent implements OnInit {
     addValidation() {
         this.cartForm = this.FormBuilder.group({
             qty: ['', [Validators.required, Validators.max(this.product['stock_qty'])]],
-            product_id: +[this.product['product_id']]
+            product_id: +[this.product['product_id']],
+            cart_id: +[this.CartService.getCartId()],
         });
     }
     get formControls() { return this.cartForm.controls; }
@@ -56,11 +57,13 @@ export class ProductDetailsComponent implements OnInit {
         this.CartService.addCart(cart)
             .subscribe(
                 result => {
-                    this.Router.navigateByUrl('/homepage');
+                    if(result['cartId']) {
+                        this.CartService.setCartId(result['cartId']);
+                    }
+                    this.Router.navigateByUrl('/cart');
                 },
                 error => {
                     if (error.error.validation_error_messages) {
-                        // this.notValidAccount = true;
                     }
                 }
             );

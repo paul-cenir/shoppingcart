@@ -20,7 +20,11 @@ const routes: Routes = [
     {
         path: 'product-details/:id',
         loadChildren: './product-details/product-details.module#ProductDetailsModule'
-    }
+    },
+    {
+        path: 'cart',
+        loadChildren: './cart/cart.module#CartModule', canActivate: [AuthGuard]
+    },
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

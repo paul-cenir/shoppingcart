@@ -3,7 +3,11 @@
         <a routerLink="homepage"><img src="https://static.uprinting.com/bootstrap/img/uprinting-logo.svg"
                 alt="Uprinting logo">
         </a>
-        <a *ngIf="headerData != 'login'" (click)="logout()" [innerHTML]="headerData"></a>
-        <a *ngIf="headerData == 'login'" routerLink="login-signup" [innerHTML]="headerData"></a>
+        <div class="right">
+            <a  routerLink="cart">Cart </a>
+            <a *ngIf="headerData != 'login'" (click)="logout()" [innerHTML]="headerData"></a>
+            <a *ngIf="headerData == 'login'" routerLink="login-signup" [innerHTML]="headerData"></a>
+        </div>
+
     </header>
 </div>

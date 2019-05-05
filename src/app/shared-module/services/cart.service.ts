@@ -1,5 +1,4 @@
 import { Cart } from './../models/cart';
-import { Product } from '../models/product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
@@ -15,7 +14,6 @@ const httpOptions = {
 })
 
 export class CartService {
-
     constructor(private http: HttpClient) {
     }
     addCart(Cart: Cart): Observable<Cart> {
@@ -29,5 +27,13 @@ export class CartService {
                 return throwError(err);
             })
         );
+    }
+
+    public setCartId(cartId): void {
+        localStorage.setItem('CART_ID', cartId);
+    }
+
+    public getCartId() {
+        return localStorage.getItem('CART_ID');
     }
 }

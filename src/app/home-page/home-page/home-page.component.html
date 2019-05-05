@@ -2,7 +2,7 @@
     <div routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products"
         class="product-list-container">
         <div class="produc-list-sub-contianer">
-            <img [src]="product.product_thumbnail" alt="">
+            <img [src]="product.product_thumbnail" alt="Product image">
             <div class="product-details">
                 <div class="product-label">
                     <p>Product Name</p>
@@ -12,7 +12,7 @@
                 <div  class="product-data">
                     <p>{{product.product_name}}</p>
                     <p>{{product.product_desc}}</p>
-                    <p>{{product.price}}</p>
+                    <p>{{ ConfigService.currencySign }} {{ product.price | number : ConfigService.priceFormat}}</p>
                 </div>
             </div>
         </div>

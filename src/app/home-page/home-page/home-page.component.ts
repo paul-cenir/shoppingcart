@@ -22,9 +22,4 @@ export class HomePageComponent implements OnInit {
         this.ProductService.getProducts()
             .subscribe(products => this.products = products);
     }
-
-    // test(): void  {
-    //   this.ProductService.
-    //   .subscribe(heroes => this.heroes = heroes);
-    // }
 }

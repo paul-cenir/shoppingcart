@@ -7,10 +7,9 @@ const TOKEN = 'TOKEN';
     providedIn: 'root'
 })
 export class AuthService {
-
-    public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-    public setAccessToken(token): void {
+    public setAccessToken(token) {
         localStorage.setItem('ACCESS_TOKEN', token);
+        return of(true);
     }
 
     public getAccessToken() {
@@ -51,4 +50,6 @@ export class AuthService {
             return tokenDecoded;
         }
     }
+
+    public headerUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 }

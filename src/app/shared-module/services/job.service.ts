@@ -1,4 +1,3 @@
-import { Product } from '../models/product';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
@@ -13,29 +12,21 @@ const httpOptions = {
     providedIn: 'root'
 })
 
-export class ProductService {
-
+export class JobService {
     constructor(private HttpClient: HttpClient) {
     }
-
-    /** GET heroes from the server */
-    getProducts(): Observable<Product[]> {
-        return this.HttpClient.get<Product[]>(environment.apiUrl + 'product')
-            .pipe(
-                catchError(err => {
-                    console.log('Handling error locally and rethrowing it...', err);
-                    return throwError(err);
-                })
-            );
+    addJob(Job: any): Observable<any> {
+        return this.HttpClient.post<any>(environment.apiUrl + 'job', Job);
     }
 
-    getProduct(id: number): Observable<Product> {
-        return this.HttpClient.get<Product>(`${environment.apiUrl}product/${id}`) .pipe(
+    getJob(id: number): Observable<any> {
+        return this.HttpClient.get<any>(`${environment.apiUrl}job/${id}`).pipe(
             catchError(err => {
                 console.log('Handling error locally and rethrowing it...', err);
                 return throwError(err);
             })
         );
     }
+
 
 }

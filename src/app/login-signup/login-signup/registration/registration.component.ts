@@ -2,7 +2,7 @@ import { RegistrationService } from './registration.service';
 import { User } from './../../../shared-module/models/user';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from 'src/app/shared-module/helpers/must-match.validator';
 
@@ -13,17 +13,22 @@ import { MustMatch } from 'src/app/shared-module/helpers/must-match.validator';
 })
 export class RegistrationComponent implements OnInit {
     user: User[];
+    originated: String;
+    registrationForm: FormGroup;
+    notValidAccount: boolean;
+    isSubmitted = false;
     constructor(
         private AuthService: AuthService,
         private Router: Router,
         private FormBuilder: FormBuilder,
-        private RegistrationService: RegistrationService
+        private RegistrationService: RegistrationService,
+        private ActivedRoute: ActivatedRoute
     ) {
-
+        this.ActivedRoute.queryParams.subscribe(params => {
+            this.originated = params['originated'];
+        });
     }
-    registrationForm: FormGroup;
-    notValidAccount: boolean;
-    isSubmitted = false;
+   
     ngOnInit() {
         this.registrationForm = this.FormBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -31,10 +36,10 @@ export class RegistrationComponent implements OnInit {
             confirm_password: ['', Validators.required],
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
-            company_name: ['', ]
+            company_name: ['',]
         }, {
-            validator: MustMatch('password', 'confirm_password')
-        });
+                validator: MustMatch('password', 'confirm_password')
+            });
     }
     get formControls() { return this.registrationForm.controls; }
 
@@ -44,14 +49,20 @@ export class RegistrationComponent implements OnInit {
             return;
         }
         const userLogin: User = this.registrationForm.value as User;
+        const originatedUrl = this.originated;
         this.RegistrationService.register(userLogin)
             .subscribe(
                 result => {
-                    // Handle result
+                    this.AuthService.setAccessToken(result['data'])
+                        .subscribe(res => {
+                            if (originatedUrl == "cart") {
+                                this.Router.navigateByUrl('/shipment');
+                            } else {
+                                this.Router.navigateByUrl('/homepage');
+                            }
+                        });
+                    this.AuthService.headerUserLoggedIn.next(true);
                     this.notValidAccount = false;
-                    this.AuthService.setAccessToken(result['data']);
-                    this.Router.navigateByUrl('/homepage');
-                    this.AuthService.isUserLoggedIn.next(true);
                 },
                 error => {
                     if (error.error.validation_error_messages) {

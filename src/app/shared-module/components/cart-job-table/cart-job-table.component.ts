@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ConfigService } from '../../services/config.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-cart-job-table',
@@ -8,9 +9,15 @@ import { ConfigService } from '../../services/config.service';
 })
 export class CartJobTableComponent implements OnInit {
     @Input() tableData: any;
-    constructor(private ConfigService: ConfigService) {
+    @Output() trigerClick = new EventEmitter();
+    
+    constructor(private ConfigService: ConfigService,private Router: Router) {
     }
+
     ngOnInit() {
     }
 
+    clickEvent() { 
+        this.trigerClick.emit();
+    }
 }

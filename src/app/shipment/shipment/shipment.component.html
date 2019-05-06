@@ -1,0 +1,74 @@
+<form [formGroup]="shipmentForm" class="shipment-container" (ngSubmit)="addShipping()">
+    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_name.errors }">
+        <label for="shipping_name">Name:</label>
+        <input type="text" class="form-control" placeholder="Shipping name" formControlName="shipping_name">
+        <div *ngIf="isSubmitted && formControls.shipping_name.errors" class="help-block">
+            <div *ngIf="formControls.shipping_name.errors.required">Name is required</div>
+            <div *ngIf="formControls.shipping_name.errors.maxlength">Should be a limit of up to 35 characters </div>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_address1.errors }">
+        <label for="shipping_address1">Address 1:</label>
+        <input type="text" class="form-control" placeholder="Address 1" formControlName="shipping_address1">
+        <div *ngIf="isSubmitted && formControls.shipping_address1.errors" class="help-block">
+            <div *ngIf="formControls.shipping_address1.errors.required">Address 1 is required</div>
+            <div *ngIf="formControls.shipping_address1.errors.maxlength">Should be a limit of up to 35 characters </div>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_address2.errors }">
+        <label for="shipping_address2">Shipping Address 2:</label>
+        <input type="text" class="form-control" placeholder="Shipping Address 2" formControlName="shipping_address2">
+        <div *ngIf="isSubmitted && formControls.shipping_address2.errors" class="help-block">
+            <div *ngIf="formControls.shipping_address2.errors.maxlength">Should be a limit of up to 35 characters </div>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_address3.errors }">
+        <label for="shipping_address3">Shipping Address 3:</label>
+        <input type="text" class="form-control" placeholder="Shipping Address 3" formControlName="shipping_address3">
+        <div *ngIf="isSubmitted && formControls.shipping_address3.errors" class="help-block">
+            <div *ngIf="formControls.shipping_address3.errors.maxlength">Should be a limit of up to 35 characters </div>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_city.errors }">
+        <label for="shipping_city">Shipping City:</label>
+        <input type="text" class="form-control" placeholder="Shipping City" formControlName="shipping_city">
+        <div *ngIf="isSubmitted && formControls.shipping_city.errors" class="help-block">
+            <div *ngIf="formControls.shipping_city.errors.required">Shipping City is required</div>
+            <div *ngIf="formControls.shipping_city.errors.maxlength">Should be a limit of up to 35 characters </div>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_state.errors }">
+        <label for="shipping_state">Shipping state:</label>
+        <input type="text" class="form-control" placeholder="Shipping state" formControlName="shipping_state">
+        <div *ngIf="isSubmitted && formControls.shipping_state.errors" class="help-block">
+            <div *ngIf="formControls.shipping_state.errors.required">Shipping state is required</div>
+            <div *ngIf="formControls.shipping_state.errors.maxlength">Should be a limit of up to 35 characters </div>
+        </div>
+    </div>
+    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_country.errors }">
+        <label for="shipping_country">Shipping country:</label>
+        <input type="text" class="form-control" placeholder="Shipping country" formControlName="shipping_country">
+        <div *ngIf="isSubmitted && formControls.shipping_country.errors" class="help-block">
+            <div *ngIf="formControls.shipping_country.errors.required">Shipping country is required</div>
+            <div *ngIf="formControls.shipping_country.errors.maxlength">Should be a limit of up to 35 characters </div>
+        </div>
+    </div>
+    <div class="form-group shipping-rate" *ngIf="shipmentRate">
+        <div class="radio">
+            <label><input type="radio" name="shipping_mehod" value="Ground"
+                    formControlName="shipping_mehod">Ground Shipping <span>{{ ConfigService.currencySign }}
+                    {{ shipmentRate.Ground | number : ConfigService.priceFormat}}</span></label>
+        </div>
+        <div class="radio">
+                <label><input type="radio" name="shipping_mehod" value="Expedited"
+                        formControlName="shipping_mehod">Expedited Shipping <span>{{ ConfigService.currencySign }}
+                        {{ shipmentRate.Expedited | number : ConfigService.priceFormat}}</span></label>
+            </div>
+        <div [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_mehod.errors }">
+            <div *ngIf="isSubmitted && formControls.shipping_mehod.errors" class="help-block">
+                <div *ngIf="formControls.shipping_country.errors.required">Shipping is required</div>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Continue</button>
+</form>

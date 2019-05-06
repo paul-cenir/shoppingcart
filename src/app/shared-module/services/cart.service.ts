@@ -14,14 +14,14 @@ const httpOptions = {
 })
 
 export class CartService {
-    constructor(private http: HttpClient) {
+    constructor(private HttpClient: HttpClient) {
     }
     addCart(Cart: Cart): Observable<Cart> {
-        return this.http.post<Cart>(environment.apiUrl + 'cart', Cart);
+        return this.HttpClient.post<Cart>(environment.apiUrl + 'cart', Cart);
     }
 
     getCart(id: number): Observable<Cart> {
-        return this.http.get<Cart>(`${environment.apiUrl}cart/${id}`).pipe(
+        return this.HttpClient.get<Cart>(`${environment.apiUrl}cart/${id}`).pipe(
             catchError(err => {
                 console.log('Handling error locally and rethrowing it...', err);
                 return throwError(err);

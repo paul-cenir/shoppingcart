@@ -26,17 +26,17 @@
                 </div>
             </td>
             <td>{{ row.qty }}</td>
-            <td>{{ row.sub_total }}</td>
+            <td>{{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}</td>
         </tr>
         <tr>
             <td></td>
             <td></td>
             <td>
                 <div>
-                    <div><p><span>Sub Total:</span>{{tableData.cartData.sub_total}}</p></div>
-                    <div><p><span>Shipping:</span>0.00</p></div>
-                    <div><p><span>Grand Total:</span>{{tableData.cartData.sub_total}}</p></div>
-                    <button type="submit" class="btn btn-primary">Checkout</button>
+                    <div><p><span>Sub Total:</span>{{ ConfigService.currencySign }} {{tableData.cartData.sub_total | number : ConfigService.priceFormat}}</p></div>
+                    <div><p><span>Shipping:</span> {{ ConfigService.currencySign }} {{tableData.cartData.shipping_total ? (tableData.cartData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}</p></div>
+                    <div><p><span>Grand Total:</span>{{ ConfigService.currencySign }} {{tableData.cartData.total_amount}}</p></div>
+                    <button type="submit" (click)="clickEvent()" class="btn btn-primary">Checkout</button>
                 </div>
             </td>
         </tr>

@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
     headerData: string;
-    isUserLoggedIn: boolean;
+    headerUserLoggedIn: boolean;
     constructor(private AuthService: AuthService, private Router: Router) {
-        this.AuthService.isUserLoggedIn.subscribe( resp => {
+        this.AuthService.headerUserLoggedIn.subscribe( resp => {
             const accountData = this.AuthService.parseAccessTokenData();
             if (this.AuthService.isLoggedIn()) {
                 this.headerData = 'logout ' + accountData.data.first_name;
@@ -27,6 +27,6 @@ export class HeaderComponent implements OnInit {
     logout() {
         const tokenDeleted = this.AuthService.deleteAccessToken();
         tokenDeleted.subscribe(res => this.Router.navigateByUrl('/homepage') );
-        this.AuthService.isUserLoggedIn.next(false);
+        this.AuthService.headerUserLoggedIn.next(false);
     }
 }

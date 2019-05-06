@@ -15,6 +15,8 @@ export class ProductDetailsComponent implements OnInit {
     product: Product;
     productQuantity = 1;
     price: number;
+    cartForm: FormGroup;
+    isSubmitted = false;
     constructor(
         // tslint:disable-next-line:no-shadowed-variable
         private ProductService: ProductService,
@@ -24,8 +26,7 @@ export class ProductDetailsComponent implements OnInit {
         private ConfigService: ConfigService,
         private CartService: CartService
     ) { }
-    cartForm: FormGroup;
-    isSubmitted = false;
+  
     ngOnInit() {
         this.getProduct();
     }

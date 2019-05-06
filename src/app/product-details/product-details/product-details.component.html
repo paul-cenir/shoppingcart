@@ -16,7 +16,7 @@
                     <div class="product-data">
                         <p>{{product.product_name}}</p>
                         <p>{{product.product_desc}}</p>
-                        <p>{{product.price}}</p>
+                        <p>{{ ConfigService.currencySign }} {{ product.price | number : ConfigService.priceFormat}}</p>
                         <div class="form-group quantity-min-height"
                             [ngClass]="{ 'has-error': isSubmitted && formControls.qty.errors }">
                             <input type="number" name="quantity" class="form-control" formControlName="qty"

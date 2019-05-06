@@ -11,7 +11,7 @@ const routes: Routes = [
     },
     {
         path: 'homepage',
-        loadChildren: './home-page/home-page.module#HomePageModule'/*, canActivate: [AuthGuard]*/
+        loadChildren: './home-page/home-page.module#HomePageModule'
     },
     {
         path: 'login-signup',
@@ -23,8 +23,21 @@ const routes: Routes = [
     },
     {
         path: 'cart',
-        loadChildren: './cart/cart.module#CartModule', canActivate: [AuthGuard]
+        loadChildren: './cart/cart.module#CartModule'
     },
+    {
+        path: 'shipment',
+        loadChildren: './shipment/shipment.module#ShipmentModule', canActivate: [AuthGuard]
+    },
+    {
+        path: 'payment',
+        loadChildren: './payment/payment.module#PaymentModule', canActivate: [AuthGuard]
+    },
+    {
+        path: 'job-order',
+        loadChildren: './job-order/job-order.module#JobOrderModule', canActivate: [AuthGuard]
+    },
+    { path: '**', redirectTo: 'homepage' }
 ];
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

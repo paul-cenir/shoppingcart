@@ -2,7 +2,7 @@ import { User } from './../../../shared-module/models/user';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
     selector: 'app-login',
@@ -11,23 +11,33 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
     user: User[];
+    originated: string;
+    loginForm: FormGroup;
+    isSubmitted = false;
+    notValidAccount: boolean;
     constructor(
         private AuthService: AuthService,
         private Router: Router,
         private FormBuilder: FormBuilder,
-        private LoginService: LoginService
+        private LoginService: LoginService,
+        private ActivedRoute: ActivatedRoute
     ) {
-
+        this.ActivedRoute.queryParams.subscribe(params => {
+            this.originated = params['originated'];
+        });
     }
-    loginForm: FormGroup;
-    isSubmitted = false;
-    notValidAccount: boolean;
+    
     ngOnInit() {
+      this.validationForm();
+    }
+
+    public validationForm() {
         this.loginForm = this.FormBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required]
         });
-    }
+    } 
+
     get formControls() { return this.loginForm.controls; }
 
     public login(): void {
@@ -35,14 +45,22 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
+        const originatedUrl = this.originated;
         const userLogin: User = this.loginForm.value as User;
         this.LoginService.login(userLogin)
             .subscribe(
                 result => {
                     this.notValidAccount = false;
-                    this.AuthService.setAccessToken(result['data']);
-                    this.Router.navigateByUrl('/homepage');
-                    this.AuthService.isUserLoggedIn.next(true);
+                    this.AuthService.setAccessToken(result['data'])
+                        .subscribe(res => {
+                            if (originatedUrl == "cart") {
+                                this.Router.navigateByUrl('/shipment');
+                            } else {
+                                this.Router.navigateByUrl('/homepage');
+                            }
+                        });
+
+                    this.AuthService.headerUserLoggedIn.next(true);
                 },
                 error => {
                     if (error.error.validation_error_messages) {

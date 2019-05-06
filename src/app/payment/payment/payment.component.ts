@@ -20,7 +20,7 @@ export class PaymentComponent implements OnInit {
     ngOnInit() {
         this.getCart();
     }
-    
+
     getCart(): void {
 
         this.CartService.getCart(this.cartId)
@@ -35,5 +35,6 @@ export class PaymentComponent implements OnInit {
                 this.Router.navigateByUrl('/job-order');
             });
     }
+    
 
 }

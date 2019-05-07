@@ -29,15 +29,24 @@ export class CartService {
         );
     }
 
+    deleteCart(id: number): Observable<Cart> {
+        return this.HttpClient.delete<Cart>(`${environment.apiUrl}cart/${id}`);
+    }
+
     deleteCartItem(id: number): Observable<Cart> {
         return this.HttpClient.delete<Cart>(`${environment.apiUrl}cart-item/${id}`);
     }
 
-    public setCartId(cartId): void {
+    setCartId(cartId): void {
         localStorage.setItem('CART_ID', cartId);
     }
 
-    public getCartId() {
+    getCartId() {
         return localStorage.getItem('CART_ID');
+    }
+
+    deleteCartId() {
+        localStorage.removeItem('CART_ID');
+        return of(true);
     }
 }

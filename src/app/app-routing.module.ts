@@ -34,7 +34,7 @@ const routes: Routes = [
         loadChildren: './payment/payment.module#PaymentModule', canActivate: [AuthGuard]
     },
     {
-        path: 'job-order',
+        path: 'job-order/:id',
         loadChildren: './job-order/job-order.module#JobOrderModule', canActivate: [AuthGuard]
     },
     { path: '**', redirectTo: 'homepage' }

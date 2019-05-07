@@ -25,16 +25,16 @@ export class PaymentComponent implements OnInit {
 
         this.CartService.getCart(this.cartId)
             .subscribe(result => {
-                this.cartTableData = result['data'];
+                this.cartTableData = [];
+                this.cartTableData['bodyData'] = result['data']['cartItemData'];
+                this.cartTableData['footerData'] = result['data']['cartData'];
             });
     }
 
     checkout() {
         this.JobService.addJob(this.cartId)
             .subscribe(result => {
-                this.Router.navigateByUrl('/job-order');
+                this.Router.navigateByUrl('/job-order/' + result);
             });
     }
-    
-
 }

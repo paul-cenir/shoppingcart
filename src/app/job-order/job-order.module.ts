@@ -1,3 +1,5 @@
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared-module/shared-module.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -8,7 +10,9 @@ import { JobOrderComponent } from './job-order/job-order.component';
   declarations: [JobOrderComponent],
   imports: [
     CommonModule,
-    JobOrderRoutingModule
+    JobOrderRoutingModule,
+    SharedModule,
+    FormsModule
   ]
 })
 export class JobOrderModule { }

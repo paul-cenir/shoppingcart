@@ -18,7 +18,9 @@ export class CartComponent implements OnInit {
         const cartId = +this.CartService.getCartId();
         this.CartService.getCart(cartId)
             .subscribe(result => {
-                this.cartTableData = result['data'];
+                this.cartTableData = [];
+                this.cartTableData['bodyData'] = result['data']['cartItemData'];
+                this.cartTableData['footerData'] = result['data']['cartData'];
             });
     }
     checkout() {

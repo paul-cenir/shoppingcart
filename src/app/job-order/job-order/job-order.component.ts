@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { JobService } from 'src/app/shared-module/services/job.service';
 
 @Component({
-  selector: 'app-job-order',
-  templateUrl: './job-order.component.html',
-  styleUrls: ['./job-order.component.less']
+    selector: 'app-job-order',
+    templateUrl: './job-order.component.html',
+    styleUrls: ['./job-order.component.less']
 })
 export class JobOrderComponent implements OnInit {
+    @Input() jobTableData: any;
+    jobId = +this.ActivatedRoute.snapshot.paramMap.get('id');
+    constructor(
+        private Router: Router,
+        private JobService: JobService,
+        private ActivatedRoute: ActivatedRoute
+    ) { }
 
-  constructor() { }
+    ngOnInit() {
+        this.getJob();
+    }
 
-  ngOnInit() {
-  }
+    getJob(): void {
+        this.JobService.getJob(this.jobId)
+            .subscribe(result => {
+                this.jobTableData = [];
+                this.jobTableData['bodyData'] = result['data']['jobItemData'];
+                this.jobTableData['footerData'] = result['data']['jobData'];
+            });
+    }
 
+    shopping() {
+        this.Router.navigateByUrl('/homepage');
+    }
 }

@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of tableData.cartItemData">
+        <tr *ngFor="let row of tableData.bodyData">
             <td>
                 <div class="produc-list-sub-contianer">
                     <img [src]="row.product_thumbnail" alt="Product image">
@@ -28,17 +28,20 @@
             <td>{{ row.qty }}</td>
             <td>{{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}</td>
         </tr>
+       
+    </tbody>
+    <tfoot>
         <tr>
             <td></td>
             <td></td>
             <td>
-                <div>
-                    <div><p><span>Sub Total:</span>{{ ConfigService.currencySign }} {{tableData.cartData.sub_total | number : ConfigService.priceFormat}}</p></div>
-                    <div><p><span>Shipping:</span> {{ ConfigService.currencySign }} {{tableData.cartData.shipping_total ? (tableData.cartData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}</p></div>
-                    <div><p><span>Grand Total:</span>{{ ConfigService.currencySign }} {{tableData.cartData.total_amount}}</p></div>
+                <div class="d-flex">
+                    <div><p><span>Sub Total:</span>{{ ConfigService.currencySign }} {{tableData.footerData.sub_total | number : ConfigService.priceFormat}}</p></div>
+                    <div><p><span>Shipping:</span> {{ ConfigService.currencySign }} {{tableData.footerData.shipping_total ? (tableData.footerData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}</p></div>
+                    <div><p><span>Grand Total:</span>{{ ConfigService.currencySign }} {{tableData.footerData.total_amount}}</p></div>
                     <button type="submit" (click)="clickEvent()" class="btn btn-primary">Checkout</button>
                 </div>
             </td>
         </tr>
-    </tbody>
+    </tfoot>
 </table>

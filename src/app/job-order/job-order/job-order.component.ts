@@ -10,6 +10,7 @@ import { JobService } from 'src/app/shared-module/services/job.service';
 export class JobOrderComponent implements OnInit {
     @Input() jobTableData: any;
     jobId = +this.ActivatedRoute.snapshot.paramMap.get('id');
+    jobData: any;
     constructor(
         private Router: Router,
         private JobService: JobService,
@@ -23,9 +24,11 @@ export class JobOrderComponent implements OnInit {
     getJob(): void {
         this.JobService.getJob(this.jobId)
             .subscribe(result => {
+                this.jobData =  result['data']['jobData'];
                 this.jobTableData = [];
                 this.jobTableData['bodyData'] = result['data']['jobItemData'];
-                this.jobTableData['footerData'] = result['data']['jobData'];
+                this.jobTableData['footerData'] = this.jobData;
+                this.jobTableData['footerData']['buttonText'] = 'Continue Shopping';
             });
     }
 

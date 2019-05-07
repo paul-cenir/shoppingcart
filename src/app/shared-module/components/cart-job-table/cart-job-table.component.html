@@ -28,7 +28,7 @@
             <td>{{ row.qty }}</td>
             <td>{{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}</td>
         </tr>
-       
+
     </tbody>
     <tfoot>
         <tr>
@@ -36,10 +36,21 @@
             <td></td>
             <td>
                 <div class="d-flex">
-                    <div><p><span>Sub Total:</span>{{ ConfigService.currencySign }} {{tableData.footerData.sub_total | number : ConfigService.priceFormat}}</p></div>
-                    <div><p><span>Shipping:</span> {{ ConfigService.currencySign }} {{tableData.footerData.shipping_total ? (tableData.footerData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}</p></div>
-                    <div><p><span>Grand Total:</span>{{ ConfigService.currencySign }} {{tableData.footerData.total_amount}}</p></div>
-                    <button type="submit" (click)="clickEvent()" class="btn btn-primary">Checkout</button>
+                    <div>
+                        <p><span>Sub Total:</span>{{ ConfigService.currencySign }}
+                            {{tableData.footerData.sub_total | number : ConfigService.priceFormat}}</p>
+                    </div>
+                    <div>
+                        <p><span>Shipping:</span> {{ ConfigService.currencySign }}
+                            {{tableData.footerData.shipping_total ? (tableData.footerData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}
+                        </p>
+                    </div>
+                    <div>
+                        <p><span>Grand Total:</span>{{ ConfigService.currencySign }}
+                            {{tableData.footerData.total_amount}}</p>
+                    </div>
+                    <button type="submit" (click)="clickEvent()" class="btn btn-primary">
+                        {{tableData.footerData.buttonText}}</button>
                 </div>
             </td>
         </tr>

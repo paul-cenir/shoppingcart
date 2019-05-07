@@ -9,15 +9,15 @@ import { Router } from '@angular/router';
 })
 export class CartJobTableComponent implements OnInit {
     @Input() tableData: any;
-    @Output() trigerClick = new EventEmitter();
-    
-    constructor(private ConfigService: ConfigService,private Router: Router) {
+    @Output() triggerClick = new EventEmitter();
+
+    constructor(private ConfigService: ConfigService, private Router: Router) {
     }
 
     ngOnInit() {
     }
 
-    clickEvent() { 
-        this.trigerClick.emit();
+    clickEvent() {
+        this.triggerClick.emit();
     }
 }

@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit {
         private ConfigService: ConfigService,
         private CartService: CartService
     ) { }
-  
+
     ngOnInit() {
         this.getProduct();
     }
@@ -34,9 +34,13 @@ export class ProductDetailsComponent implements OnInit {
         const id = +this.ActivatedRoute.snapshot.paramMap.get('id');
         this.ProductService.getProduct(id)
             .subscribe(result => {
-                this.product = result;
-                this.price = +this.computeTotalPrice();
-                this.addValidation();
+                if (result['product_id']) {
+                    this.product = result;
+                    this.price = +this.computeTotalPrice();
+                    this.addValidation();
+                } else {
+                    this.Router.navigateByUrl('/homepage');
+                }
             });
     }
 
@@ -58,7 +62,7 @@ export class ProductDetailsComponent implements OnInit {
         this.CartService.addCart(cart)
             .subscribe(
                 result => {
-                    if(result['cartId']) {
+                    if (result['cartId']) {
                         this.CartService.setCartId(result['cartId']);
                     }
                     this.Router.navigateByUrl('/cart');

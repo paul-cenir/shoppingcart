@@ -28,6 +28,7 @@ export class PaymentComponent implements OnInit {
                 this.cartTableData = [];
                 this.cartTableData['bodyData'] = result['data']['cartItemData'];
                 this.cartTableData['footerData'] = result['data']['cartData'];
+                this.cartTableData['footerData']['buttonText'] = 'Checkout';
             });
     }
 

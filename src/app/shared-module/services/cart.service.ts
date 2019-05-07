@@ -29,6 +29,10 @@ export class CartService {
         );
     }
 
+    deleteCartItem(id: number): Observable<Cart> {
+        return this.HttpClient.delete<Cart>(`${environment.apiUrl}cart-item/${id}`);
+    }
+
     public setCartId(cartId): void {
         localStorage.setItem('CART_ID', cartId);
     }

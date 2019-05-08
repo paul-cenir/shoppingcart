@@ -11,8 +11,6 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
         FormsModule,
         MatDialogModule,
         MatButtonModule,
-        // BrowserAnimationsModule
-
     ],
     declarations: [
         CartJobTableComponent,

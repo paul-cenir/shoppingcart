@@ -2,7 +2,12 @@
     <form [formGroup]="cartForm" (ngSubmit)="addCart()">
         <div class="product-list-container">
             <div class="produc-list-sub-contianer">
-                <img [src]="product.product_image" alt="Product image">
+                <div class="p-relative">
+                    <span class="sold_out" *ngIf="soldOut">Sold out</span>
+                    <img [src]="product.product_image" alt="Product image">
+                </div>
+
+
                 <div class="product-details">
                     <div class="product-label">
                         <p>Product Name</p>
@@ -20,7 +25,7 @@
                         <div class="form-group quantity-min-height"
                             [ngClass]="{ 'has-error': isSubmitted && formControls.qty.errors }">
                             <input type="number" name="quantity" class="form-control" formControlName="qty"
-                                [(ngModel)]="productQuantity" (ngModelChange)="quantityChanged($event)">
+                                [(ngModel)]="productQuantity" (ngModelChange)="changeQuantity($event)" [attr.disabled]="soldOut ? '' : null">
                             <div *ngIf="isSubmitted && formControls.qty.errors" class="help-block">
                                 <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
                                 <div *ngIf="formControls.qty.errors.max">The quantity on inventory is not sufficient
@@ -28,7 +33,7 @@
                             </div>
                         </div>
                         <p>{{ ConfigService.currencySign }} {{ price | number : ConfigService.priceFormat}}</p>
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="soldOut">Add to Cart</button>
                     </div>
                 </div>
             </div>

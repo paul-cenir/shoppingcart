@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
     price: number;
     cartForm: FormGroup;
     isSubmitted = false;
+    soldOut: boolean;
     constructor(
         // tslint:disable-next-line:no-shadowed-variable
         private ProductService: ProductService,
@@ -37,6 +38,7 @@ export class ProductDetailsComponent implements OnInit {
                 if (result['product_id']) {
                     this.product = result;
                     this.price = +this.computeTotalPrice();
+                    this.soldOut = this.product.stock_qty < 1;
                     this.addValidation();
                 } else {
                     this.Router.navigateByUrl('/homepage');
@@ -74,7 +76,7 @@ export class ProductDetailsComponent implements OnInit {
             );
     }
 
-    quantityChanged() {
+    changeQuantity() {
         if (this.productQuantity === 0) {
             this.productQuantity = 1;
         }

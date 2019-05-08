@@ -9,7 +9,7 @@ import { JobService } from 'src/app/shared-module/services/job.service';
     styleUrls: ['./payment.component.less']
 })
 export class PaymentComponent implements OnInit {
-    @Input() cartTableData: any
+    @Input() cartTableData: any;
     cartId = +this.CartService.getCartId();
     constructor(
         private CartService: CartService,
@@ -22,7 +22,6 @@ export class PaymentComponent implements OnInit {
     }
 
     getCart(): void {
-
         this.CartService.getCart(this.cartId)
             .subscribe(result => {
                 this.cartTableData = [];
@@ -35,6 +34,7 @@ export class PaymentComponent implements OnInit {
     checkout() {
         this.JobService.addJob(this.cartId)
             .subscribe(result => {
+                this.CartService.deleteCartId();
                 this.Router.navigateByUrl('/job-order/' + result);
             });
     }

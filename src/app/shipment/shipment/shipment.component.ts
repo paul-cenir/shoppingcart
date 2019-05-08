@@ -31,24 +31,24 @@ export class ShipmentComponent implements OnInit {
 
     public validationForm() {
         this.shipmentForm = this.FormBuilder.group({
-            shipping_name: ['', [Validators.required,Validators.maxLength(35)]],
-            shipping_address1: ['',[Validators.required,Validators.maxLength(35)] ],
+            shipping_name: ['', [Validators.required, Validators.maxLength(35)]],
+            shipping_address1: ['', [Validators.required, Validators.maxLength(35)]],
             shipping_address2: ['', [Validators.maxLength(35)]],
             shipping_address3: ['', [Validators.maxLength(35)]],
-            shipping_city: ['', [Validators.required,Validators.maxLength(35)]],
-            shipping_state: ['', [Validators.required,Validators.maxLength(35)]],
-            shipping_country: ['', [Validators.required,Validators.maxLength(35)]],
+            shipping_city: ['', [Validators.required, Validators.maxLength(35)]],
+            shipping_state: ['', [Validators.required, Validators.maxLength(35)]],
+            shipping_country: ['', [Validators.required, Validators.maxLength(35)]],
             shipping_mehod: ['', [Validators.required]],
             cart_id: [this.CartService.getCartId(), []]
         });
-    } 
+    }
 
     getShipment(): void {
         const id = +this.CartService.getCartId();
         this.ShipmentService.getShipmentRate(id)
             .subscribe(result => {
-                console.log(result);
                 this.shipmentRate = result['data'];
+                console.log(this.shipmentRate);
             });
     }
 
@@ -64,7 +64,7 @@ export class ShipmentComponent implements OnInit {
                     this.Router.navigateByUrl('/payment');
                 },
                 error => {
-                    
+
                 }
             );
     }

@@ -18,6 +18,7 @@ export class ProductDetailsComponent implements OnInit {
     cartForm: FormGroup;
     isSubmitted = false;
     soldOut: boolean;
+    insufficientStock = false;
     constructor(
         // tslint:disable-next-line:no-shadowed-variable
         private ProductService: ProductService,
@@ -48,7 +49,7 @@ export class ProductDetailsComponent implements OnInit {
 
     addValidation() {
         this.cartForm = this.FormBuilder.group({
-            qty: ['', [Validators.required, Validators.max(this.product['stock_qty'])]],
+            qty: ['', [Validators.required]],
             product_id: +[this.product['product_id']],
             cart_id: +[this.CartService.getCartId()],
         });
@@ -71,6 +72,8 @@ export class ProductDetailsComponent implements OnInit {
                 },
                 error => {
                     if (error.error.validation_error_messages) {
+                        this.insufficientStock = true;
+                        console.log(23);
                     }
                 }
             );

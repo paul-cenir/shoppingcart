@@ -3,11 +3,10 @@ import { ConfigService } from '../../services/config.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-cart-job-table',
-    templateUrl: './cart-job-table.component.html',
-    styleUrls: ['./cart-job-table.component.less']
+    selector: 'app-order-detail',
+    templateUrl: './order-detail.component.html',
 })
-export class CartJobTableComponent implements OnInit {
+export class OrderDetailComponent implements OnInit {
     @Input() tableData: any;
     @Output() triggerClick = new EventEmitter();
 

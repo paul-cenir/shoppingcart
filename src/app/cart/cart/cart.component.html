@@ -1,5 +1,4 @@
 <!-- <app-cart-job-table [tableData]="cartTableData" (triggerClick)='checkout($event)'></app-cart-job-table> -->
-
 <table class="table comp-order-detail" *ngIf="tableData">
     <thead>
         <tr>
@@ -64,7 +63,7 @@
     </tfoot>
 </table>
 
-<div *ngIf="!tableData">
+<div *ngIf="!showCart">
     <p>Your shopping cart is currently empty.</p>
     <button routerLink="homepage"  class="btn site-btn-primary">Return to Shop</button>
 </div>

@@ -15,6 +15,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 export class CartComponent implements OnInit {
     tableData: any;
     cartId: number;
+    showCart: boolean;
     constructor(
         private CartService: CartService,
         private ActivatedRoute: ActivatedRoute,
@@ -29,6 +30,7 @@ export class CartComponent implements OnInit {
     getCart(): void {
         this.cartId = +this.CartService.getCartId();
         if (this.cartId) {
+            this.showCart = true;
             this.CartService.getCart(this.cartId)
                 .subscribe(result => {
                     this.tableData = [];

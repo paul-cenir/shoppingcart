@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule, MatButtonModule } from '@angular/material';
+import { SiteImageComponent } from './components/site-image/site-image.component';
 @NgModule({
     imports: [
         CommonModule,
@@ -13,14 +14,16 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
     ],
     declarations: [
         OrderDetailComponent,
-        ConfirmationDialogComponent
+        ConfirmationDialogComponent,
+        SiteImageComponent
     ],
     entryComponents: [
         ConfirmationDialogComponent
     ],
     exports: [CommonModule,
         FormsModule,
-        OrderDetailComponent
+        OrderDetailComponent,
+        SiteImageComponent
     ]
 })
 export class SharedModule { }

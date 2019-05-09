@@ -57,6 +57,9 @@ module.exports = function (grunt) {
                     'src/assets/css/flow-shipment/flow-shipment-mobile.css': [
                         'src/assets/less/modules/flow-shipment/flow-shipment-mobile.less'
                     ],
+                    'src/assets/css/order-detail/comp-order-detail.css': [
+                        'src/assets/less/components/order-detail/comp-order-detail.less'
+                    ],
                 }
             }
         },
@@ -108,6 +111,9 @@ module.exports = function (grunt) {
                     ],
                     'src/assets/css_min/flow-shipment/flow-shipment-mobile.css': [
                         'src/assets/css/flow-shipment/flow-shipment-mobile.less'
+                    ],
+                    'src/assets/css_min/order-detail/comp-order-detail.min.css': [
+                        'src/assets/css/order-detail/comp-order-detail.css'
                     ],
                 }
 

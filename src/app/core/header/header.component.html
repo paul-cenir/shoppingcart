@@ -5,7 +5,7 @@
                     alt="Uprinting logo">
             </a>
             <div class="header-right">
-                <p *ngIf="headerData != 'login'">Hi! {{accountData.data.first_name}}</p>
+                <p *ngIf="headerData != 'login' && accountData">Hi! {{accountData.data.first_name}}</p>
                 <a *ngIf="headerData != 'login'" (click)="logout()" [innerHTML]="headerData"></a>
                 <a *ngIf="headerData == 'login'" routerLink="login-signup" [innerHTML]="headerData"></a>
                 <button type="button" routerLink="cart" class="btn btn-default btn-sm">

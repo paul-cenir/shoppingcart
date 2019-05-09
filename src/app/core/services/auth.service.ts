@@ -50,16 +50,13 @@ export class AuthService {
             return false;
         } else {
             const tokenDecoded = JSON.parse(window.atob(accessTokenData[1]));
-
             if (!tokenDecoded.data.customer_id) {
                 return false;
             }
-
             if (this.isAccessTokenIsExpired(tokenDecoded.exp)) {
                 this.deleteAccessToken();
                 return false;
             }
-
             return tokenDecoded;
         }
     }

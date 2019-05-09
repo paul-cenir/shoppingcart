@@ -1,4 +1,4 @@
-<form [formGroup]="shipmentForm" class="shipment-container" (ngSubmit)="addShipping()">
+<form [formGroup]="shipmentForm" class="order-details" (ngSubmit)="addShipping()">
     <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_name.errors }">
         <label for="shipping_name">Name</label>
         <input type="text" class="form-control" placeholder="Shipping name" formControlName="shipping_name">
@@ -70,5 +70,5 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Continue</button>
+    <button type="submit" class="btn site-btn-primary">Continue</button>
 </form>

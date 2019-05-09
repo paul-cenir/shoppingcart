@@ -56,7 +56,7 @@
                         <p><span>Grand Total:</span>{{ ConfigService.currencySign }}
                             {{tableData.footerData.total_amount}}</p>
                     </div>
-                    <button type="submit" (click)="checkout()" class="btn btn-primary">
+                    <button type="submit" (click)="checkout()" class="btn site-btn-primary">
                         {{tableData.footerData.buttonText}}</button>
                 </div>
             </td>
@@ -66,5 +66,5 @@
 
 <div *ngIf="!tableData">
     <p>Your shopping cart is currently empty.</p>
-    <button routerLink="homepage"  class="btn btn-primary">Return to Shop</button>
+    <button routerLink="homepage"  class="btn site-btn-primary">Return to Shop</button>
 </div>

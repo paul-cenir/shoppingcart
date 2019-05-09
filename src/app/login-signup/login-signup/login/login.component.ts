@@ -6,8 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
     selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.less']
+    templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
     user: User[];
@@ -26,9 +25,9 @@ export class LoginComponent implements OnInit {
             this.originated = params['originated'];
         });
     }
-    
+
     ngOnInit() {
-      this.validationForm();
+        this.validationForm();
     }
 
     public validationForm() {
@@ -36,7 +35,7 @@ export class LoginComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             password: ['', Validators.required]
         });
-    } 
+    }
 
     get formControls() { return this.loginForm.controls; }
 

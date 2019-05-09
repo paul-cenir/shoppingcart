@@ -5,7 +5,8 @@ import { JobService } from 'src/app/shared/services/job.service';
 @Component({
     selector: 'app-job-order',
     templateUrl: './job-order.component.html',
-    styleUrls: ['./job-order.component.less']
+    styleUrls: ['../../../assets/less/modules/flow-job-order/flow-job-order.less'
+    , '../../../assets/less/modules/flow-job-order/flow-job-order-mobile.less']
 })
 export class JobOrderComponent implements OnInit {
     @Input() jobTableData: any;

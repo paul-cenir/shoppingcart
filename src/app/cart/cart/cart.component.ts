@@ -9,10 +9,12 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 @Component({
     selector: 'app-cart',
     templateUrl: './cart.component.html',
-    styleUrls: ['./cart.component.less']
+    styleUrls: ['../../../assets/less/modules/flow-cart/flow-cart.less'
+        , '../../../assets/less/modules/flow-cart/flow-cart-mobile.less']
 })
 export class CartComponent implements OnInit {
     tableData: any;
+    cartId: number;
     constructor(
         private CartService: CartService,
         private ActivatedRoute: ActivatedRoute,
@@ -25,15 +27,18 @@ export class CartComponent implements OnInit {
         this.getCart();
     }
     getCart(): void {
-        const cartId = +this.CartService.getCartId();
-        this.CartService.getCart(cartId)
-            .subscribe(result => {
-                this.tableData = [];
-                this.tableData['bodyData'] = result['data']['cartItemData'];
-                this.tableData['footerData'] = result['data']['cartData'];
-                this.tableData['footerData']['buttonText'] = 'Checkout';
-            });
+        this.cartId = +this.CartService.getCartId();
+        if (this.cartId) {
+            this.CartService.getCart(this.cartId)
+                .subscribe(result => {
+                    this.tableData = [];
+                    this.tableData['bodyData'] = result['data']['cartItemData'];
+                    this.tableData['footerData'] = result['data']['cartData'];
+                    this.tableData['footerData']['buttonText'] = 'Checkout';
+                });
+        }
     }
+
     checkout() {
         if (this.AuthService.isLoggedIn()) {
             this.Router.navigateByUrl('/shipment');

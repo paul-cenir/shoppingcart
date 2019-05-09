@@ -7,7 +7,8 @@ import { ConfigService } from 'src/app/shared/services/config.service';
 @Component({
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',
-    styleUrls: ['./home-page.component.less']
+    styleUrls: ['../../../assets/less/modules/page-home/page-home.less'
+    , '../../../assets/less/modules/page-home/page-home-mobile.less']
 })
 export class HomePageComponent implements OnInit {
 

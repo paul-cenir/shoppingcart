@@ -8,8 +8,7 @@ import { MustMatch } from 'src/app/shared/helpers/must-match.validator';
 
 @Component({
     selector: 'app-registration',
-    templateUrl: './registration.component.html',
-    styleUrls: ['./registration.component.less']
+    templateUrl: './registration.component.html'
 })
 export class RegistrationComponent implements OnInit {
     user: User[];
@@ -28,7 +27,7 @@ export class RegistrationComponent implements OnInit {
             this.originated = params['originated'];
         });
     }
-   
+
     ngOnInit() {
         this.registrationForm = this.FormBuilder.group({
             email: ['', [Validators.required, Validators.email]],

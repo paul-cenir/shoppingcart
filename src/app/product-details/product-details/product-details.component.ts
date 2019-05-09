@@ -9,7 +9,8 @@ import { CartService } from 'src/app/shared/services/cart.service';
 @Component({
     selector: 'app-product-details',
     templateUrl: './product-details.component.html',
-    styleUrls: ['./product-details.component.less']
+    styleUrls: ['../../../assets/less/modules/page-product-details/page-product-details.less'
+    , '../../../assets/less/modules/page-product-details/page-product-details-mobile.less']
 })
 export class ProductDetailsComponent implements OnInit {
     product: Product;

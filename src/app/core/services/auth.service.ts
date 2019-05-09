@@ -35,7 +35,7 @@ export class AuthService {
         return of(true);
     }
 
-    public isAccessTokenIsExpired(exp) {
+    private isAccessTokenIsExpired(exp) {
         const currentTimestamp = moment().unix();
         return currentTimestamp >= +exp;
     }

@@ -13,7 +13,8 @@
             <td>
                 <div class="produc-list-sub-contianer">
                     <div>
-                        <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row.cart_item_id)" data-title="Delete" ><span class="glyphicon glyphicon-trash"></span></button>
+                        <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row.cart_item_id)"
+                            data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
                         <img [src]="row.product_thumbnail" alt="Product image">
                     </div>
 
@@ -62,3 +63,8 @@
         </tr>
     </tfoot>
 </table>
+
+<div *ngIf="!tableData">
+    <p>Your shopping cart is currently empty.</p>
+    <button routerLink="homepage"  class="btn btn-primary">Return to Shop</button>
+</div>

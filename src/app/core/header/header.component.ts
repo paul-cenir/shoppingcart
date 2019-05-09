@@ -11,11 +11,12 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
     headerData: string;
     headerUserLoggedIn: boolean;
+    accountData: any;
     constructor(private AuthService: AuthService, private Router: Router, private CartService: CartService) {
         this.AuthService.headerUserLoggedIn.subscribe(resp => {
-            const accountData = this.AuthService.parseAccessTokenData();
+            this.accountData = this.AuthService.parseAccessTokenData();
             if (this.AuthService.isLoggedIn()) {
-                this.headerData = 'logout ' + accountData.data.first_name;
+                this.headerData = 'logout ';
             } else {
                 this.headerData = 'login';
             }

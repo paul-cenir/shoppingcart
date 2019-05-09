@@ -1,8 +1,5 @@
 header {
-    display: flex;
-    height: 70px;
-    align-items: center;
-    justify-content: space-between;
+    border: solid 1px #dddddd;
 }
 header img {
     width: 175px;
@@ -11,4 +8,23 @@ header img {
 }
 a {
     cursor: pointer;
+    color: #006bb7;
+    font-weight: 600;
+    text-decoration: none;
+}
+.comp-header {
+    display: flex;
+    height: 70px;
+    align-items: center;
+    justify-content: space-between;
+    .header-right {
+        display: flex;
+        align-items: center;
+        a,p {
+            margin-right: 20px; 
+        }
+    }
+    p {
+        margin: 0;
+    }
 }

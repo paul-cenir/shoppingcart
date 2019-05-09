@@ -1,13 +1,17 @@
-<div class="container">
-    <header>
-        <a routerLink="homepage"><img src="https://static.uprinting.com/bootstrap/img/uprinting-logo.svg"
-                alt="Uprinting logo">
-        </a>
-        <div class="right">
-            <a  routerLink="cart">Cart </a>
-            <a *ngIf="headerData != 'login'" (click)="logout()" [innerHTML]="headerData"></a>
-            <a *ngIf="headerData == 'login'" routerLink="login-signup" [innerHTML]="headerData"></a>
+<header>
+    <div class="container">
+        <div class="comp-header">
+            <a routerLink="homepage"><img src="https://static.uprinting.com/bootstrap/img/uprinting-logo.svg"
+                    alt="Uprinting logo">
+            </a>
+            <div class="header-right">
+                <p *ngIf="headerData != 'login'">Hi! {{accountData.data.first_name}}</p>
+                <a *ngIf="headerData != 'login'" (click)="logout()" [innerHTML]="headerData"></a>
+                <a *ngIf="headerData == 'login'" routerLink="login-signup" [innerHTML]="headerData"></a>
+                <button type="button" routerLink="cart" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+                </button>
+            </div>
         </div>
-
-    </header>
-</div>
+    </div>
+</header>

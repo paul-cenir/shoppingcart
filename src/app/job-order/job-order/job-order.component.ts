@@ -32,7 +32,7 @@ export class JobOrderComponent implements OnInit {
             });
     }
 
-    shopping() {
+    goToshop() {
         this.Router.navigateByUrl('/homepage');
     }
 }

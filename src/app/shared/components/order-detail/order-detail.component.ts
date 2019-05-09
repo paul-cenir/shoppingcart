@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-order-detail',
     templateUrl: './order-detail.component.html',
+    styleUrls: ['../../../../assets/less/components/order-detail/comp-order-detail.less']
 })
 export class OrderDetailComponent implements OnInit {
     @Input() tableData: any;

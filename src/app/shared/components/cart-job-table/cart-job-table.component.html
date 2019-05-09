@@ -1,4 +1,4 @@
-<table class="table job-cart-table" *ngIf="tableData">
+<table class="table comp-order-detail" *ngIf="tableData">
     <thead>
         <tr>
             <th>Product</th>
@@ -9,7 +9,7 @@
     <tbody>
         <tr *ngFor="let row of tableData.bodyData">
             <td>
-                <div class="produc-list-sub-contianer">
+                <div class="product-section">
                     <img [src]="row.product_thumbnail" alt="Product image">
                     <div class="product-details">
                         <div class="product-label">

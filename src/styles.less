@@ -1,47 +1,26 @@
-//amber css
-@import (less) "../src/assets/css/deeppurple-amber.css";
 
-//product design Homepage
-.product-list-container {
-    &:focus {
-        cursor: pointer;
-        outline: none;
+
+
+.main-container {
+    .form-group {
+        position: relative;
+        min-height: 70px;
     }
-    cursor: pointer;
-    border: solid 1px #dedede;
-    margin-bottom: 14px;
-}
-.produc-list-sub-contianer {
-    display: flex;
-    align-items: center;
-    min-height: 130px;
-    .product-details {
-        display: flex;
+    .help-block {
+        position: absolute;
     }
-    .product-label {
-        margin: 0 20px;
-        p {
-            font-weight: bold;
-            text-align: right;
-        }
+    .error {
+        color: #a94442;
     }
-    .delete-btn {
-        margin-right: 20px;
+    
+    .p-relative {
+        position: relative;
     }
 }
-.quantity-min-height {
-    min-height: 46px !important;
-}
-.has-error .form-control {
-    border-color: #a94442 !important; 
-}
-.job-cart-table td:nth-child(3),.job-cart-table th:nth-child(3) {
-    text-align: right;
-    padding-right: 34px;
-}
-.p-relative {
-    position: relative;
-}
+
+
+
+
 .img-container {
     img {
         //need image to be same size.This is for refactoring
@@ -49,6 +28,7 @@
         width: 160px;
     }
 }
+
 .sold_out {
     top: 18px;
     left: -6px;
@@ -80,15 +60,5 @@
     -webkit-transform: scale(0.7);
     border: 2px rgba(255,255,255,0.7) dashed;
 }
-.error {
-    color: #a94442;
-}
-.main-container {
-    .form-group {
-        position: relative;
-        min-height: 70px;
-    }
-    .help-block {
-        position: absolute;
-    }
-}
+
+

@@ -1,7 +1,7 @@
 <div class="product" *ngIf="product">
     <form [formGroup]="cartForm" (ngSubmit)="addCart()">
-        <div class="product-list-container">
-            <div class="produc-list-sub-contianer">
+        <div class="comp-product-detail">
+            <div class="product-section">
                 <div class="p-relative">
                     <span class="sold_out" *ngIf="soldOut">Sold out</span>
                     <img [src]="product.product_image" alt="Product image">

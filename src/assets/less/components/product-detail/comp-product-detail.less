@@ -1,0 +1,30 @@
+.comp-product-detail {
+    &:focus {
+        cursor: pointer;
+        outline: none;
+    }
+    cursor: pointer;
+    border: solid 1px #dedede;
+    margin-bottom: 14px;
+}
+.product-section {
+    display: flex;
+    align-items: center;
+    min-height: 130px;
+    .product-details {
+        display: flex;
+    }
+    .product-label {
+        margin: 0 20px;
+        p {
+            font-weight: bold;
+            text-align: right;
+        }
+    }
+    .delete-btn {
+        margin-right: 20px;
+    }
+    .quantity-min-height {
+        min-height: 46px !important;
+    }
+}

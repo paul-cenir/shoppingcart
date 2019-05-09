@@ -1,7 +1,7 @@
-import { ConfirmationDialogComponent } from './../../shared-module/components/confirmation-dialog/confirmation-dialog.component';
-import { ConfigService } from 'src/app/shared-module/services/config.service';
+import { ConfirmationDialogComponent } from '../../shared/components/confirmation-dialog/confirmation-dialog.component';
+import { ConfigService } from 'src/app/shared/services/config.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { CartService } from 'src/app/shared-module/services/cart.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShipmentService } from './shipment.service';
-import { CartService } from 'src/app/shared-module/services/cart.service';
-import { ConfigService } from 'src/app/shared-module/services/config.service';
+import { CartService } from 'src/app/shared/services/cart.service';
+import { ConfigService } from 'src/app/shared/services/config.service';
 import { Router } from '@angular/router';
 
 @Component({

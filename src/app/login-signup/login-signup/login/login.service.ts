@@ -1,6 +1,6 @@
-import { HttpErrorHandler, HandleError } from './../../../shared-module/services/http-error-handler.service';
+import { HttpErrorHandler, HandleError } from '../../../shared/services/http-error-handler.service';
 import { HttpClient } from '@angular/common/http';
-import { User } from './../../../shared-module/models/user';
+import { User } from '../../../shared/models/user';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';

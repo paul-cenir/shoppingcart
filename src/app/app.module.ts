@@ -1,6 +1,6 @@
 import { AuthGuardService } from './core/services/auth-guard.service';
-import { MessageService } from './shared-module/services/message.service';
-import { HttpErrorHandler } from './shared-module/services/http-error-handler.service';
+import { MessageService } from './shared/services/message.service';
+import { HttpErrorHandler } from './shared/services/http-error-handler.service';
 import { FormsModule } from '@angular/forms';
 import { LoginGuardService } from './core/services/login-guard.service';
 import { AuthService } from './core/services/auth.service';

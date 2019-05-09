@@ -1,10 +1,10 @@
 import { RegistrationService } from './registration.service';
-import { User } from './../../../shared-module/models/user';
+import { User } from '../../../shared/models/user';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MustMatch } from 'src/app/shared-module/helpers/must-match.validator';
+import { MustMatch } from 'src/app/shared/helpers/must-match.validator';
 
 @Component({
     selector: 'app-registration',

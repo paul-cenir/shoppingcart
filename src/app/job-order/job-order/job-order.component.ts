@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { JobService } from 'src/app/shared-module/services/job.service';
+import { JobService } from 'src/app/shared/services/job.service';
 
 @Component({
     selector: 'app-job-order',

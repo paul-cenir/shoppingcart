@@ -1,11 +1,11 @@
-import { Cart } from './../../shared-module/models/cart';
-import { ConfigService } from './../../shared-module/services/config.service';
-import { ProductService } from '../../shared-module/services/product.service';
-import { Product } from '../../shared-module/models/product';
+import { Cart } from '../../shared/models/cart';
+import { ConfigService } from '../../shared/services/config.service';
+import { ProductService } from '../../shared/services/product.service';
+import { Product } from '../../shared/models/product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CartService } from 'src/app/shared-module/services/cart.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 @Component({
     selector: 'app-product-details',
     templateUrl: './product-details.component.html',

@@ -1,9 +1,9 @@
 import { AuthService } from 'src/app/core/services/auth.service';
 
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../shared-module/models/product';
-import { ProductService } from '../../shared-module/services/product.service';
-import { ConfigService } from 'src/app/shared-module/services/config.service';
+import { Product } from '../../shared/models/product';
+import { ProductService } from '../../shared/services/product.service';
+import { ConfigService } from 'src/app/shared/services/config.service';
 @Component({
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',

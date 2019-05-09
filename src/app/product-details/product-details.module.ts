@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { ProductDetailsRoutingModule } from './product-details-routing.module';
 
-import { SharedModule } from 'src/app/shared-module/shared-module.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({

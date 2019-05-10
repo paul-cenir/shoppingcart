@@ -44,8 +44,9 @@ export class ProductDetailsComponent implements OnInit {
                 this.price = +this.computeTotalPrice();
                 this.soldOut = this.product.stock_qty < 1;
                 this.addValidation();
-                }, error => {
-                    this.Router.navigateByUrl('/homepage');
+                },
+                error => {
+                    this.Router.navigateByUrl('/404');
                 }
             );
     }

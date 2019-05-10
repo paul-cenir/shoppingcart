@@ -32,6 +32,8 @@ export class JobOrderComponent implements OnInit {
                 this.jobTableData['bodyData'] = result['data']['jobItemData'];
                 this.jobTableData['footerData'] = this.jobData;
                 this.jobTableData['footerData']['buttonText'] = 'Continue Shopping';
+            }, error => {
+                this.Router.navigateByUrl('/404');
             });
     }
 

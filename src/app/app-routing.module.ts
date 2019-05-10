@@ -1,8 +1,8 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService as AuthGuard } from './core/services/auth-guard.service';
 import { LoginGuardService as LoginGuard } from './core/services/login-guard.service';
+import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
     {
@@ -36,7 +36,9 @@ const routes: Routes = [
         path: 'job-order/:id',
         loadChildren: './job-order/job-order.module#JobOrderModule', canActivate: [AuthGuard]
     },
-    { path: '**', redirectTo: 'homepage' }
+    // { path: '**', redirectTo: 'homepage' }
+    { path: '404', component: PageNotFoundComponent },
+    { path: '**', redirectTo: '/404' }
 ];
 
 @NgModule({

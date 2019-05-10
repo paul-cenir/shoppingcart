@@ -28,7 +28,7 @@
                             <div *ngIf="isSubmitted && formControls.qty.errors" class="help-block">
                                 <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
                             </div>
-                            <div *ngIf="insufficientStock" class="help-block">
+                            <div *ngIf="insufficientStock && !formControls.qty.errors" class="help-block">
                                 <div *ngIf="insufficientStock">
                                     The quantity on inventory is not sufficient
                                 </div>

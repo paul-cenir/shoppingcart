@@ -40,15 +40,14 @@ export class ProductDetailsComponent implements OnInit {
         const id = +this.ActivatedRoute.snapshot.paramMap.get('id');
         this.ProductService.getProduct(id)
             .subscribe(result => {
-                if (result['product_id']) {
-                    this.product = result;
-                    this.price = +this.computeTotalPrice();
-                    this.soldOut = this.product.stock_qty < 1;
-                    this.addValidation();
-                } else {
+                this.product = result["data"];
+                this.price = +this.computeTotalPrice();
+                this.soldOut = this.product.stock_qty < 1;
+                this.addValidation();
+                }, error => {
                     this.Router.navigateByUrl('/homepage');
                 }
-            });
+            );
     }
 
     addValidation() {
@@ -78,7 +77,6 @@ export class ProductDetailsComponent implements OnInit {
                 error => {
                     if (error.error.validation_error_messages) {
                         this.insufficientStock = true;
-                        console.log(23);
                     }
                 }
             );

@@ -10,7 +10,7 @@
         <tr *ngFor="let row of tableData.bodyData">
             <td>
                 <div class="product-section">
-                    <img [src]="row.product_thumbnail" alt="Product image">
+                    <app-site-image [imgSrc]="row.product_thumbnail" alt="Product image"></app-site-image>
                     <div class="product-details">
                         <div class="product-label">
                             <p>Product Name</p>

@@ -47,9 +47,9 @@ export class RegistrationComponent implements OnInit {
         if (this.registrationForm.invalid) {
             return;
         }
-        const userLogin: User = this.registrationForm.value as User;
+        const user: User = this.registrationForm.value as User;
         const originatedUrl = this.originated;
-        this.RegistrationService.register(userLogin)
+        this.RegistrationService.register(user)
             .subscribe(
                 result => {
                     this.AuthService.setAccessToken(result['data'])
@@ -69,7 +69,6 @@ export class RegistrationComponent implements OnInit {
                     }
                 }
             );
-
     }
 
 }

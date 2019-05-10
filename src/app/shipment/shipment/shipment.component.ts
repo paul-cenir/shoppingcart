@@ -50,7 +50,6 @@ export class ShipmentComponent implements OnInit {
         this.ShipmentService.getShipmentRate(id)
             .subscribe(result => {
                 this.shipmentRate = result['data'];
-                console.log(this.shipmentRate);
             });
     }
 

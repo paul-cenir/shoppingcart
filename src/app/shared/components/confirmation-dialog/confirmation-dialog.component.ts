@@ -13,7 +13,6 @@ export class ConfirmationDialogComponent implements OnInit {
     constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
         this.modalTitle = data.title;
         this.modalDescription = data.description;
-        console.log(data);
     }
 
     ngOnInit() {

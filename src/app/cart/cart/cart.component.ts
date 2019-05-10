@@ -70,4 +70,8 @@ export class CartComponent implements OnInit {
             }
         });
     }
+
+    goToHomePage() {
+        this.Router.navigateByUrl('/homepage');
+    }
 }

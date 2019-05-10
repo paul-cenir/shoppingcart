@@ -39,6 +39,12 @@ module.exports = function (grunt) {
                     'src/assets/css/page-not-found/page-not-found-mobile.css': [
                         'src/assets/less/modules/page-not-found/page-not-found-mobile.less'
                     ],
+                    'src/assets/css/page-empty/page-empty.css': [
+                        'src/assets/less/modules/page-empty/page-empty.less'
+                    ],
+                    'src/assets/css/page-empty/page-empty-mobile.css': [
+                        'src/assets/less/modules/page-empty/page-empty-mobile.less'
+                    ],
                     'src/assets/css/flow-checkout/flow-checkout.css': [
                         'src/assets/less/modules/flow-checkout/flow-checkout.less'
                     ],
@@ -85,7 +91,13 @@ module.exports = function (grunt) {
                     ],
                     'src/assets/css_min/page-not-found/page-not-found-mobile.min.css': [
                         'src/assets/css/page-not-found/page-not-found-mobile.css'
-                    ]
+                    ],
+                    'src/assets/css_min/page-empty/page-empty.min.css': [
+                        'src/assets/css/page-empty/page-empty.css'
+                    ],
+                    'src/assets/css_min/page-empty/page-empty-mobile.min.css': [
+                        'src/assets/css/page-empty/page-empty-mobile.css'
+                    ],
                 }
 
             }

@@ -26,7 +26,8 @@ import { EmptyPageComponent } from './components/empty-page/empty-page.component
     exports: [CommonModule,
         FormsModule,
         OrderDetailComponent,
-        SiteImageComponent
+        SiteImageComponent,
+        EmptyPageComponent
     ]
 })
 

@@ -63,7 +63,7 @@
         </tfoot>
     </table>
     <div *ngIf="!showCart">
-        <p>Your shopping cart is currently empty.</p>
-        <button routerLink="homepage" class="btn site-btn-primary">Return to Shop</button>
+        <app-empty-page [message]="'Your shopping cart is currently empty.'" [icon]="'glyphicon-shopping-cart'"
+            (triggerClick)='goToHomePage($event)'></app-empty-page>
     </div>
 </div>

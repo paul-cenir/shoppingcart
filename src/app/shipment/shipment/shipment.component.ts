@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'app-shipment',
     templateUrl: './shipment.component.html',
-    styleUrls: ['../../../assets/less/modules/flow-shipment/flow-shipment.less'
-        , '../../../assets/less/modules/flow-shipment/flow-shipment-mobile.less']
+    styleUrls: ['../../../assets/css_min/flow-checkout/flow-checkout.min.css'
+        , '../../../assets/css_min/flow-checkout/flow-checkout-mobile.min.css']
 })
 
 export class ShipmentComponent implements OnInit {

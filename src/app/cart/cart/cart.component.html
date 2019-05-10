@@ -1,67 +1,69 @@
-<!-- <app-order-detail [tableData]="cartTableData" (triggerClick)='checkout($event)'></app-order-detail> -->
-<table class="table comp-order-detail" *ngIf="tableData">
-    <thead>
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let row of tableData.bodyData">
-            <td>
-                <div class="product-section">
-                    <div>
-                        <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row.cart_item_id)"
-                            data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                        <img [src]="row.product_thumbnail" alt="Product image">
-                    </div>
+<div class="flow-checkout-container page-cart-container">
+    <table class="table comp-order-detail" *ngIf="tableData">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of tableData.bodyData">
+                <td>
+                    <div class="product-section">
+                        <div>
+                            <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row.cart_item_id)"
+                                data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                            <img [src]="row.product_thumbnail" alt="Product image">
+                        </div>
 
-                    <div class="product-details">
-                        <div class="product-label">
-                            <p>Product Name</p>
-                            <p>Product Description</p>
-                            <p>Price</p>
+                        <div class="product-details">
+                            <div class="product-label">
+                                <p>Product Name</p>
+                                <p>Product Description</p>
+                                <p>Price</p>
+                            </div>
+                            <div class="product-data">
+                                <p>{{row.product_name}}</p>
+                                <p>{{row.product_desc}}</p>
+                                <p> {{ ConfigService.currencySign }} {{ row.price | number : ConfigService.priceFormat}}
+                                </p>
+                            </div>
                         </div>
-                        <div class="product-data">
-                            <p>{{row.product_name}}</p>
-                            <p>{{row.product_desc}}</p>
-                            <p> {{ ConfigService.currencySign }} {{ row.price | number : ConfigService.priceFormat}}</p>
+                    </div>
+                </td>
+                <td>{{ row.qty }}</td>
+                <td>{{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="d-flex">
+                        <div>
+                            <p><span>Sub Total:</span>{{ ConfigService.currencySign }}
+                                {{tableData.footerData.sub_total | number : ConfigService.priceFormat}}</p>
                         </div>
+                        <div>
+                            <p><span>Shipping:</span> {{ ConfigService.currencySign }}
+                                {{tableData.footerData.shipping_total ? (tableData.footerData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}
+                            </p>
+                        </div>
+                        <div>
+                            <p><span>Grand Total:</span>{{ ConfigService.currencySign }}
+                                {{tableData.footerData.total_amount}}</p>
+                        </div>
+                        <button type="submit" (click)="checkout()" class="btn site-btn-primary">
+                            {{tableData.footerData.buttonText}}</button>
                     </div>
-                </div>
-            </td>
-            <td>{{ row.qty }}</td>
-            <td>{{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <div class="d-flex">
-                    <div>
-                        <p><span>Sub Total:</span>{{ ConfigService.currencySign }}
-                            {{tableData.footerData.sub_total | number : ConfigService.priceFormat}}</p>
-                    </div>
-                    <div>
-                        <p><span>Shipping:</span> {{ ConfigService.currencySign }}
-                            {{tableData.footerData.shipping_total ? (tableData.footerData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}
-                        </p>
-                    </div>
-                    <div>
-                        <p><span>Grand Total:</span>{{ ConfigService.currencySign }}
-                            {{tableData.footerData.total_amount}}</p>
-                    </div>
-                    <button type="submit" (click)="checkout()" class="btn site-btn-primary">
-                        {{tableData.footerData.buttonText}}</button>
-                </div>
-            </td>
-        </tr>
-    </tfoot>
-</table>
-<div *ngIf="!showCart">
-    <p>Your shopping cart is currently empty.</p>
-    <button routerLink="homepage" class="btn site-btn-primary">Return to Shop</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <div *ngIf="!showCart">
+        <p>Your shopping cart is currently empty.</p>
+        <button routerLink="homepage" class="btn site-btn-primary">Return to Shop</button>
+    </div>
 </div>

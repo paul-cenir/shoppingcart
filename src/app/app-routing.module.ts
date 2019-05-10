@@ -36,7 +36,6 @@ const routes: Routes = [
         path: 'job-order/:id',
         loadChildren: './job-order/job-order.module#JobOrderModule', canActivate: [AuthGuard]
     },
-    // { path: '**', redirectTo: 'homepage' }
     { path: '404', component: PageNotFoundComponent },
     { path: '**', redirectTo: '/404' }
 ];

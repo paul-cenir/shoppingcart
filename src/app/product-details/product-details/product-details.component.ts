@@ -10,8 +10,8 @@ import { CartService } from 'src/app/shared/services/cart.service';
 @Component({
     selector: 'app-product-details',
     templateUrl: './product-details.component.html',
-    styleUrls: ['../../../assets/less/modules/page-product-details/page-product-details.less'
-        , '../../../assets/less/modules/page-product-details/page-product-details-mobile.less']
+    styleUrls: ['../../../assets/css_min/page-product-details/page-product-details.min.css'
+        , '../../../assets/css_min/page-product-details/page-product-details_mobile.min.css']
 })
 
 export class ProductDetailsComponent implements OnInit {

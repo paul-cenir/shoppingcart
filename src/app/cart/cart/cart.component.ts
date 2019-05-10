@@ -9,8 +9,8 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
 @Component({
     selector: 'app-cart',
     templateUrl: './cart.component.html',
-    styleUrls: ['../../../assets/less/modules/flow-cart/flow-cart.less'
-        , '../../../assets/less/modules/flow-cart/flow-cart-mobile.less']
+    styleUrls: ['../../../assets/css_min/flow-checkout/flow-checkout.min.css'
+        , '../../../assets/css_min/flow-checkout/flow-checkout-mobile.min.css']
 })
 export class CartComponent implements OnInit {
     tableData: any;

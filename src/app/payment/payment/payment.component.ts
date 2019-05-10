@@ -1,13 +1,14 @@
 import { JobService } from 'src/app/job-order/job-order/job.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-payment',
     templateUrl: './payment.component.html',
-    styleUrls: ['../../../assets/less/modules/flow-payment/flow-payment.less'
-        , '../../../assets/less/modules/flow-payment/flow-payment-mobile.less']
+    styleUrls: ['../../../assets/css_min/flow-checkout/flow-checkout.min.css'
+        , '../../../assets/css_min/flow-checkout/flow-checkout-mobile.min.css'],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class PaymentComponent implements OnInit {

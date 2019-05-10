@@ -5,6 +5,7 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule, MatButtonModule } from '@angular/material';
 import { SiteImageComponent } from './components/site-image/site-image.component';
+import { EmptyPageComponent } from './components/empty-page/empty-page.component';
 
 @NgModule({
     imports: [
@@ -16,7 +17,8 @@ import { SiteImageComponent } from './components/site-image/site-image.component
     declarations: [
         OrderDetailComponent,
         ConfirmationDialogComponent,
-        SiteImageComponent
+        SiteImageComponent,
+        EmptyPageComponent
     ],
     entryComponents: [
         ConfirmationDialogComponent

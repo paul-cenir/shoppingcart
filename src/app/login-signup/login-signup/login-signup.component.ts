@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-login-signup',
     templateUrl: './login-signup.component.html',
-    styleUrls: ['../../../assets/less/modules/page-login-signup/page-login-signup.less'
-        , '../../../assets/less/modules/page-login-signup/page-login-signup-mobile.less']
+    styleUrls: ['../../../assets/css_min/page-login-signup/page-login-signup.min.css'
+        , '../../../assets/css_min/page-login-signup/page-login-signup_mobile.min.css']
 })
 export class LoginSignupComponent implements OnInit {
 

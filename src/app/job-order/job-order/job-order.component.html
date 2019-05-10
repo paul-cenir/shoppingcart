@@ -1,25 +1,28 @@
-<div class="order-details" *ngIf="jobData">
-    <div>
-        <p>
-            OrderId: {{ jobData.job_order_id }}
-        </p>
+<div class="flow-checkout-container page-job-order-container">
+    <div class="order-details" *ngIf="jobData">
+        <div>
+            <p>
+                OrderId: {{ jobData.job_order_id }}
+            </p>
+        </div>
+        <div>
+            <p>
+                Ship to
+            </p>
+            <p>
+                {{ jobData.first_name }} {{ jobData.last_name }}
+            </p>
+            <p *ngIf="jobData.shipping_address1">
+                {{jobData.shipping_address1}}
+            </p>
+            <p *ngIf="jobData.shipping_address2">
+                {{jobData.shipping_address2}}
+            </p>
+            <p *ngIf="jobData.shipping_address3">
+                {{jobData.shipping_address3}}
+            </p>
+        </div>
     </div>
-    <div>
-        <p>
-            Ship to
-        </p>
-        <p>
-            {{ jobData.first_name }} {{ jobData.last_name }}
-        </p>
-        <p *ngIf="jobData.shipping_address1">
-            {{jobData.shipping_address1}}
-        </p>
-        <p *ngIf="jobData.shipping_address2">
-            {{jobData.shipping_address2}}
-        </p>
-        <p *ngIf="jobData.shipping_address3">
-            {{jobData.shipping_address3}}
-        </p>
-    </div>
+    <app-order-detail [tableData]="jobTableData" (triggerClick)='goToshop($event)'></app-order-detail>
 </div>
-<app-order-detail [tableData]="jobTableData" (triggerClick)='goToshop($event)'></app-order-detail>
+

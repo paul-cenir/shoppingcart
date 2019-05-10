@@ -6,8 +6,8 @@ import { ConfigService } from 'src/app/shared/services/config.service';
 @Component({
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',
-    styleUrls: ['../../../assets/less/modules/page-home/page-home.less'
-        , '../../../assets/less/modules/page-home/page-home-mobile.less']
+    styleUrls: ['../../../assets/css_min/page-home/page-home.min.css'
+        , '../../../assets/css_min/page-home/page-home_mobile.min.css']
 })
 export class HomePageComponent implements OnInit {
     products: Product[];

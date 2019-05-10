@@ -33,33 +33,12 @@ module.exports = function (grunt) {
                     'src/assets/css/page-product-details/page-product-details_mobile.css': [
                         'src/assets/less/modules/page-product-details/page-product-details-mobile.less'
                     ],
-                    'src/assets/css/flow-cart/flow-cart.css': [
-                        'src/assets/less/modules/flow-cart/flow-cart.less'
+                    'src/assets/css/flow-checkout/flow-checkout.css': [
+                        'src/assets/less/modules/flow-checkout/flow-checkout.less'
                     ],
-                    'src/assets/css/flow-cart/flow-cart-mobile.css': [
-                        'src/assets/less/modules/flow-cart/flow-cart-mobile.less'
-                    ],
-                    'src/assets/css/flow-job-order/flow-job-order.css': [
-                        'src/assets/less/modules/flow-job-order/flow-job-order.less'
-                    ],
-                    'src/assets/css/flow-job-order/flow-job-order-mobile.css': [
-                        'src/assets/less/modules/flow-job-order/flow-job-order-mobile.less'
-                    ],
-                    'src/assets/css/flow-payment/flow-payment.css': [
-                        'src/assets/less/modules/flow-payment/flow-payment.less'
-                    ],
-                    'src/assets/css/flow-payment/flow-payment-mobile.css': [
-                        'src/assets/less/modules/flow-payment/flow-payment-mobile.less'
-                    ],
-                    'src/assets/css/flow-shipment/flow-shipment.css': [
-                        'src/assets/less/modules/flow-shipment/flow-shipment.less'
-                    ],
-                    'src/assets/css/flow-shipment/flow-shipment-mobile.css': [
-                        'src/assets/less/modules/flow-shipment/flow-shipment-mobile.less'
-                    ],
-                    'src/assets/css/order-detail/comp-order-detail.css': [
-                        'src/assets/less/components/order-detail/comp-order-detail.less'
-                    ],
+                    'src/assets/css/flow-checkout/flow-checkout-mobile.css': [
+                        'src/assets/less/modules/flow-checkout/flow-checkout-mobile.less'
+                    ]
                 }
             }
         },
@@ -70,51 +49,31 @@ module.exports = function (grunt) {
                         'src/assets/css/global-styles/global-styles.css'
                     ],
                     'src/assets/css_min/global-styles/global-styles_mobile.min.css': ['src/assets/css/global-styles/global-styles_mobile.css'],
-                    'src/assets/css_min/page-home/page-home.css': [
-                        'src/assets/css/page-home/page-home.less'
+
+                    'src/assets/css_min/page-home/page-home.min.css': [
+                        'src/assets/css/page-home/page-home.css'
                     ],
-                    'src/assets/css_min/page-home/page-home_mobile.css': [
-                        'src/assets/css/page-home/page-home-mobile.less'
+                    'src/assets/css_min/page-home/page-home_mobile.min.css': [
+                        'src/assets/css/page-home/page-home-mobile.css'
                     ],
-                    'src/assets/css_min/page-login-signup/page-login-signup.css': [
-                        'src/assets/css/page-login-signup/page-login-signup.less'
+                    'src/assets/css_min/page-login-signup/page-login-signup.min.css': [
+                        'src/assets/css/page-login-signup/page-login-signup.css'
                     ],
-                    'src/assets/css_min/page-login-signup/page-login-signup_mobile.css': [
-                        'src/assets/css/page-login-signup/page-login-signup-mobile.less'
+                    'src/assets/css_min/page-login-signup/page-login-signup_mobile.min.css': [
+                        'src/assets/css/page-login-signup/page-login-signup-mobile.css'
                     ],
-                    'src/assets/css_min/page-product-details/page-product-details.css': [
-                        'src/assets/css/page-product-details/page-product-details.less'
+                    'src/assets/css_min/page-product-details/page-product-details.min.css': [
+                        'src/assets/css/page-product-details/page-product-details.css'
                     ],
-                    'src/assets/css_min/page-product-details/page-product-details_mobile.css': [
-                        'src/assets/css/page-product-details/page-product-details-mobile.less'
+                    'src/assets/css_min/page-product-details/page-product-details_mobile.min.css': [
+                        'src/assets/css/page-product-details/page-product-details-mobile.css'
                     ],
-                    'src/assets/css_min/flow-cart/flow-cart.css': [
-                        'src/assets/css/flow-cart/flow-cart.less'
+                    'src/assets/css_min/flow-checkout/flow-checkout.min.css': [
+                        'src/assets/css/flow-checkout/flow-checkout.css'
                     ],
-                    'src/assets/css_min/flow-cart/flow-cart-mobile.css': [
-                        'src/assets/css/flow-cart/flow-cart-mobile.less'
-                    ],
-                    'src/assets/css_min/flow-job-order/flow-job-order.css': [
-                        'src/assets/css/flow-job-order/flow-job-order.less'
-                    ],
-                    'src/assets/css_min/flow-job-order/flow-job-order-mobile.css': [
-                        'src/assets/css/flow-job-order/flow-job-order-mobile.less'
-                    ],
-                    'src/assets/css_min/flow-payment/flow-payment.css': [
-                        'src/assets/css/flow-payment/flow-payment.less'
-                    ],
-                    'src/assets/css_min/flow-payment/flow-payment-mobile.css': [
-                        'src/assets/css/flow-payment/flow-payment-mobile.less'
-                    ],
-                    'src/assets/css_min/flow-shipment/flow-shipment.css': [
-                        'src/assets/css/flow-shipment/flow-shipment.less'
-                    ],
-                    'src/assets/css_min/flow-shipment/flow-shipment-mobile.css': [
-                        'src/assets/css/flow-shipment/flow-shipment-mobile.less'
-                    ],
-                    'src/assets/css_min/order-detail/comp-order-detail.min.css': [
-                        'src/assets/css/order-detail/comp-order-detail.css'
-                    ],
+                    'src/assets/css_min/flow-checkout/flow-checkout-mobile.min.css': [
+                        'src/assets/css/flow-checkout/flow-checkout-mobile.css'
+                    ]
                 }
 
             }

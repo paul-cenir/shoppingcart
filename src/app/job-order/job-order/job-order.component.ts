@@ -1,12 +1,13 @@
 import { JobService } from 'src/app/job-order/job-order/job.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-job-order',
     templateUrl: './job-order.component.html',
-    styleUrls: ['../../../assets/less/modules/flow-job-order/flow-job-order.less'
-        , '../../../assets/less/modules/flow-job-order/flow-job-order-mobile.less']
+    styleUrls: ['../../../assets/css_min/flow-checkout/flow-checkout.min.css'
+        , '../../../assets/css_min/flow-checkout/flow-checkout-mobile.min.css'],
+    encapsulation: ViewEncapsulation.None
 })
 
 export class JobOrderComponent implements OnInit {

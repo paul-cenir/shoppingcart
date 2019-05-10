@@ -4,7 +4,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuardService as AuthGuard } from './core/services/auth-guard.service';
 import { LoginGuardService as LoginGuard } from './core/services/login-guard.service';
 
-
 const routes: Routes = [
     {
         path: '', redirectTo: 'homepage', pathMatch: 'full'
@@ -39,8 +38,10 @@ const routes: Routes = [
     },
     { path: '**', redirectTo: 'homepage' }
 ];
+
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

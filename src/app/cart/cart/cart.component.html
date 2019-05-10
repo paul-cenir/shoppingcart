@@ -34,7 +34,6 @@
             <td>{{ row.qty }}</td>
             <td>{{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}</td>
         </tr>
-
     </tbody>
     <tfoot>
         <tr>
@@ -62,8 +61,7 @@
         </tr>
     </tfoot>
 </table>
-
 <div *ngIf="!showCart">
     <p>Your shopping cart is currently empty.</p>
-    <button routerLink="homepage"  class="btn site-btn-primary">Return to Shop</button>
+    <button routerLink="homepage" class="btn site-btn-primary">Return to Shop</button>
 </div>

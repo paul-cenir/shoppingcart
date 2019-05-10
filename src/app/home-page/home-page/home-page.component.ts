@@ -1,5 +1,4 @@
 import { AuthService } from 'src/app/core/services/auth.service';
-
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../shared/models/product';
 import { ProductService } from '../../shared/services/product.service';
@@ -8,10 +7,9 @@ import { ConfigService } from 'src/app/shared/services/config.service';
     selector: 'app-home-page',
     templateUrl: './home-page.component.html',
     styleUrls: ['../../../assets/less/modules/page-home/page-home.less'
-    , '../../../assets/less/modules/page-home/page-home-mobile.less']
+        , '../../../assets/less/modules/page-home/page-home-mobile.less']
 })
 export class HomePageComponent implements OnInit {
-
     products: Product[];
     constructor(private ProductService: ProductService, private AuthService: AuthService, private ConfigService: ConfigService) { }
 

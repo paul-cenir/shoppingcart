@@ -55,15 +55,15 @@
     </div>
     <div class="form-group shipping-rate" *ngIf="shipmentRate">
         <div class="radio">
-            <label><input type="radio" name="shipping_mehod" value="Ground"
-                    formControlName="shipping_mehod">Ground Shipping <span>{{ ConfigService.currencySign }}
+            <label><input type="radio" name="shipping_mehod" value="Ground" formControlName="shipping_mehod">Ground
+                Shipping <span>{{ ConfigService.currencySign }}
                     {{ shipmentRate.Ground | number : ConfigService.priceFormat}}</span></label>
         </div>
         <div class="radio">
-                <label><input type="radio" name="shipping_mehod" value="Expedited"
-                        formControlName="shipping_mehod">Expedited Shipping <span>{{ ConfigService.currencySign }}
-                        {{ shipmentRate.Expedited | number : ConfigService.priceFormat}}</span></label>
-            </div>
+            <label><input type="radio" name="shipping_mehod" value="Expedited"
+                    formControlName="shipping_mehod">Expedited Shipping <span>{{ ConfigService.currencySign }}
+                    {{ shipmentRate.Expedited | number : ConfigService.priceFormat}}</span></label>
+        </div>
         <div [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_mehod.errors }">
             <div *ngIf="isSubmitted && formControls.shipping_mehod.errors" class="help-block">
                 <div *ngIf="formControls.shipping_country.errors.required">Shipping is required</div>

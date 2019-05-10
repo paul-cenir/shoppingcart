@@ -6,12 +6,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
+
 @Component({
     selector: 'app-product-details',
     templateUrl: './product-details.component.html',
     styleUrls: ['../../../assets/less/modules/page-product-details/page-product-details.less'
-    , '../../../assets/less/modules/page-product-details/page-product-details-mobile.less']
+        , '../../../assets/less/modules/page-product-details/page-product-details-mobile.less']
 })
+
 export class ProductDetailsComponent implements OnInit {
     product: Product;
     productQuantity = 1;
@@ -33,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
     ngOnInit() {
         this.getProduct();
     }
+
     getProduct(): void {
         const id = +this.ActivatedRoute.snapshot.paramMap.get('id');
         this.ProductService.getProduct(id)
@@ -55,6 +58,7 @@ export class ProductDetailsComponent implements OnInit {
             cart_id: +[this.CartService.getCartId()],
         });
     }
+
     get formControls() { return this.cartForm.controls; }
 
     public addCart(): void {
@@ -91,5 +95,4 @@ export class ProductDetailsComponent implements OnInit {
         const total = this.productQuantity * this.product.price;
         return total.toFixed(2);
     }
-
 }

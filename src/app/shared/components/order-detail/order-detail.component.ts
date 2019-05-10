@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
     templateUrl: './order-detail.component.html',
     styleUrls: ['../../../../assets/less/components/order-detail/comp-order-detail.less']
 })
+
 export class OrderDetailComponent implements OnInit {
     @Input() tableData: any;
     @Output() triggerClick = new EventEmitter();

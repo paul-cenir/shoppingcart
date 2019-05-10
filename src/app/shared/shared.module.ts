@@ -5,6 +5,7 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
 import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
 import { MatDialogModule, MatButtonModule } from '@angular/material';
 import { SiteImageComponent } from './components/site-image/site-image.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -26,4 +27,5 @@ import { SiteImageComponent } from './components/site-image/site-image.component
         SiteImageComponent
     ]
 })
+
 export class SharedModule { }

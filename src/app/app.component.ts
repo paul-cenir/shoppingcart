@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.less']
 })
+
 export class AppComponent {
-  titleCusom = 'paul';
-  title = 'lazy-app';
+    name = 'paul';
+    title = 'lazy-app';
 }

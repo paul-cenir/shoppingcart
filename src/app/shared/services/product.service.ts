@@ -5,10 +5,6 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable({
     providedIn: 'root'
 })
@@ -30,7 +26,7 @@ export class ProductService {
     }
 
     getProduct(id: number): Observable<Product> {
-        return this.HttpClient.get<Product>(`${environment.apiUrl}product/${id}`) .pipe(
+        return this.HttpClient.get<Product>(`${environment.apiUrl}product/${id}`).pipe(
             catchError(err => {
                 console.log('Handling error locally and rethrowing it...', err);
                 return throwError(err);

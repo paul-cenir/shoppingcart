@@ -4,7 +4,6 @@ import { HttpErrorHandler } from './shared/services/http-error-handler.service';
 import { FormsModule } from '@angular/forms';
 import { LoginGuardService } from './core/services/login-guard.service';
 import { AuthService } from './core/services/auth.service';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -29,4 +28,5 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     bootstrap: [AppComponent]
 })
+
 export class AppModule { }

@@ -13,7 +13,7 @@ export class ShipmentService {
         return this.HttpClient.get<any>(`${environment.apiUrl}shipment/${id}`);
     }
 
-    addShipment(shipment:any): Observable<any> {
+    addShipment(shipment: any): Observable<any> {
         return this.HttpClient.post<any>(environment.apiUrl + 'shipment', shipment);
     }
 }

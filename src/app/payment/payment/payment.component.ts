@@ -1,13 +1,15 @@
+import { JobService } from 'src/app/job-order/job-order/job.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from 'src/app/shared/services/cart.service';
 import { Router } from '@angular/router';
-import { JobService } from 'src/app/shared/services/job.service';
 
 @Component({
     selector: 'app-payment',
     templateUrl: './payment.component.html',
-    styleUrls: ['./payment.component.less']
+    styleUrls: ['../../../assets/less/modules/flow-payment/flow-payment.less'
+        , '../../../assets/less/modules/flow-payment/flow-payment-mobile.less']
 })
+
 export class PaymentComponent implements OnInit {
     @Input() cartTableData: any;
     cartId = +this.CartService.getCartId();

@@ -5,17 +5,15 @@ import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
-const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
-
 @Injectable({
     providedIn: 'root'
 })
 
 export class CartService {
+
     constructor(private HttpClient: HttpClient) {
     }
+
     addCart(Cart: Cart): Observable<Cart> {
         return this.HttpClient.post<Cart>(environment.apiUrl + 'cart', Cart);
     }

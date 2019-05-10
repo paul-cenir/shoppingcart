@@ -4,10 +4,10 @@ import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
-  declarations: [HomePageComponent],
-  imports: [
-    SharedModule,
-    HomePageRoutingModule
-  ]
+    declarations: [HomePageComponent],
+    imports: [
+        SharedModule,
+        HomePageRoutingModule
+    ]
 })
 export class HomePageModule { }

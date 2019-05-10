@@ -4,7 +4,6 @@
         <div class="product-section">
             <div class="p-relative img-container">
                 <span class="sold_out" *ngIf="product.stock_qty < 1">Sold out</span>
-                <!-- <img [src]="product.product_thumbnail" alt="Product image"> -->
                 <app-site-image [imgSrc]="product.product_thumbnail" alt="Product image"></app-site-image>
             </div>
             <div class="product-details">

@@ -7,10 +7,8 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from
 import { of, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
-
 @Injectable()
 export class LoginGuardService implements CanActivate {
-
     // tslint:disable-next-line:no-shadowed-variable
     constructor(private AuthService: AuthService, private Router: Router) { }
 

@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
+
 export class RegistrationService {
     private handleError: HandleError;
     constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler) {

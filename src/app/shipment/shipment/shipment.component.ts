@@ -9,8 +9,9 @@ import { Router } from '@angular/router';
     selector: 'app-shipment',
     templateUrl: './shipment.component.html',
     styleUrls: ['../../../assets/less/modules/flow-shipment/flow-shipment.less'
-    , '../../../assets/less/modules/flow-shipment/flow-shipment-mobile.less']
+        , '../../../assets/less/modules/flow-shipment/flow-shipment-mobile.less']
 })
+
 export class ShipmentComponent implements OnInit {
     shipmentForm: FormGroup;
     isSubmitted = false;

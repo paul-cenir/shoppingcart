@@ -22,11 +22,13 @@ export class CartComponent implements OnInit {
         private Router: Router,
         private AuthService: AuthService,
         private ConfigService: ConfigService,
-        public dialog: MatDialog
+        public Dialog: MatDialog
     ) { }
+
     ngOnInit() {
         this.getCart();
     }
+
     getCart(): void {
         this.cartId = +this.CartService.getCartId();
         if (this.cartId) {
@@ -58,7 +60,7 @@ export class CartComponent implements OnInit {
             title: 'Delete Item',
             description: 'Do you want to delete this item?',
         };
-        const dialogRef = this.dialog.open(ConfirmationDialogComponent, dialogConfig);
+        const dialogRef = this.Dialog.open(ConfirmationDialogComponent, dialogConfig);
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
                 this.CartService.deleteCartItem(itemId)

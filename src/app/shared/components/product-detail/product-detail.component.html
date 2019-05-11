@@ -1,0 +1,41 @@
+<div class="product-section">
+    <div>
+        <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row)"
+            data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+        <img [src]="product.product_thumbnail" alt="Product image">
+    </div>
+
+    <div class="product-details">
+        <div class="product-label">
+            <p>Product Name</p>
+            <p>Product Description</p>
+            <p>Price</p>
+        </div>
+        <div class="product-data">
+            <p>{{product.product_name}}</p>
+            <p>{{product.product_desc}}</p>
+            <p> {{ ConfigService.currencySign }} {{ product.price | number : ConfigService.priceFormat}}
+            </p>
+        </div>
+    </div>
+</div> <div class="product-section">
+    <div>
+        <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row)"
+            data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+        <img [src]="product.product_thumbnail" alt="Product image">
+    </div>
+
+    <div class="product-details">
+        <div class="product-label">
+            <p>Product Name</p>
+            <p>Product Description</p>
+            <p>Price</p>
+        </div>
+        <div class="product-data">
+            <p>{{product.product_name}}</p>
+            <p>{{product.product_desc}}</p>
+            <p> {{ ConfigService.currencySign }} {{ product.price | number : ConfigService.priceFormat}}
+            </p>
+        </div>
+    </div>
+</div>

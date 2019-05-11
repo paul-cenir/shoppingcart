@@ -6,6 +6,7 @@ import { ConfirmationDialogComponent } from './components/confirmation-dialog/co
 import { MatDialogModule, MatButtonModule } from '@angular/material';
 import { SiteImageComponent } from './components/site-image/site-image.component';
 import { EmptyPageComponent } from './components/empty-page/empty-page.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { EmptyPageComponent } from './components/empty-page/empty-page.component
         OrderDetailComponent,
         ConfirmationDialogComponent,
         SiteImageComponent,
-        EmptyPageComponent
+        EmptyPageComponent,
+        ProductDetailComponent
     ],
     entryComponents: [
         ConfirmationDialogComponent
@@ -27,7 +29,8 @@ import { EmptyPageComponent } from './components/empty-page/empty-page.component
         FormsModule,
         OrderDetailComponent,
         SiteImageComponent,
-        EmptyPageComponent
+        EmptyPageComponent,
+        ProductDetailComponent
     ]
 })
 

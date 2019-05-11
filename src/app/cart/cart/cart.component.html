@@ -1,5 +1,5 @@
 <div class="flow-checkout-container page-cart-container">
-    <table class="table comp-order-detail" *ngIf="tableData">
+    <table class="table comp-order-detail" *ngIf="tableData.bodyData.length >= 1">
         <thead>
             <tr>
                 <th>Product</th>
@@ -12,7 +12,7 @@
                 <td>
                     <div class="product-section">
                         <div>
-                            <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row.cart_item_id)"
+                            <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row)"
                                 data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
                             <img [src]="row.product_thumbnail" alt="Product image">
                         </div>
@@ -62,7 +62,7 @@
             </tr>
         </tfoot>
     </table>
-    <div *ngIf="!showCart">
+    <div *ngIf="showEmptyItem">
         <app-empty-page [message]="'Your shopping cart is currently empty.'" [icon]="'glyphicon-shopping-cart'"
             (triggerClick)='goToHomePage($event)'></app-empty-page>
     </div>

@@ -1,5 +1,8 @@
 <div class="flow-checkout-container page-shipment-container">
-    <form [formGroup]="shipmentForm" class="order-details" (ngSubmit)="addShipping()">
+    <div class="shipment-header">
+        <p>Shipment</p>
+    </div>
+    <form [formGroup]="shipmentForm" class="shipment-form" (ngSubmit)="addShipping()">
         <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.shipping_name.errors }">
             <label for="shipping_name">Name</label>
             <input type="text" class="form-control" placeholder="Shipping name" formControlName="shipping_name">

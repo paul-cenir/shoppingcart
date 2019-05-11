@@ -1,4 +1,4 @@
-<div class="product" *ngIf="products">
+<div class="product" *ngIf="products.length >= 1">
     <div routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products"
         class="comp-product-detail">
         <div class="product-section">

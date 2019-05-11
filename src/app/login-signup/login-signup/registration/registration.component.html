@@ -1,13 +1,13 @@
 <form [formGroup]="registrationForm" class="registration-container" (ngSubmit)="register()">
-    <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.email.errors }">
+    <div class="form-group" [ngClass]="{ 'has-error': (isSubmitted && formControls.email.errors ) || notValidAccount }">
         <label for="email">Email address:</label>
         <input type="email" class="form-control" placeholder="Email" formControlName="email">
         <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
             <div *ngIf="formControls.email.errors.required" placeholder="Password">Email is required</div>
             <div *ngIf="formControls.email.errors.email" placeholder="Password">Invalid Email</div>
         </div>
-        <div *ngIf="notValidAccount" class="help-block">
-            <div *ngIf="notValidAccount">email already exists</div>
+        <div *ngIf="notValidAccount && !formControls.email.errors" class="help-block">
+            <div *ngIf="notValidAccount error">email already exists</div>
         </div>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': isSubmitted && formControls.password.errors }">

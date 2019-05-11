@@ -13,9 +13,10 @@ import { MatDialog, MatDialogConfig } from '@angular/material';
         , '../../../assets/css_min/flow-checkout/flow-checkout-mobile.min.css']
 })
 export class CartComponent implements OnInit {
-    tableData: any;
+    tableData = [];
     cartId: number;
     showCart: boolean;
+    showEmptyItem: boolean;
     constructor(
         private CartService: CartService,
         private ActivatedRoute: ActivatedRoute,
@@ -31,15 +32,20 @@ export class CartComponent implements OnInit {
 
     getCart(): void {
         this.cartId = +this.CartService.getCartId();
+        this.tableData['bodyData'] = [];
         if (this.cartId) {
-            this.showCart = true;
             this.CartService.getCart(this.cartId)
                 .subscribe(result => {
                     this.tableData = [];
                     this.tableData['bodyData'] = result['data']['cartItemData'];
                     this.tableData['footerData'] = result['data']['cartData'];
                     this.tableData['footerData']['buttonText'] = 'Checkout';
+                    if (this.tableData['bodyData'].length < 1) {
+                        this.showEmptyItem = true;
+                    }
                 });
+        } else {
+            this.showEmptyItem = true;
         }
     }
 
@@ -51,7 +57,7 @@ export class CartComponent implements OnInit {
         }
     }
 
-    openModal(itemId) {
+    openModal(item) {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
@@ -63,9 +69,18 @@ export class CartComponent implements OnInit {
         const dialogRef = this.Dialog.open(ConfirmationDialogComponent, dialogConfig);
         dialogRef.afterClosed().subscribe(result => {
             if (result) {
-                this.CartService.deleteCartItem(itemId)
+                this.CartService.deleteCartItem(item['cart_item_id'])
                     .subscribe(success => {
-                        this.getCart();
+                        this.tableData['footerData']['sub_total'] -= item['price'];
+                        this.tableData['footerData']['total_amount'] -= item['price'];
+                        this.tableData['footerData']['total_amount'] = this.tableData['footerData']['total_amount'].toFixed(2);
+                        this.tableData['footerData']['sub_total'] = this.tableData['footerData']['sub_total'].toFixed(2);
+                        const index = this.tableData['bodyData'].indexOf(item, 0);
+                        this.tableData['bodyData'].splice(index, 1);
+                        if (this.tableData['bodyData'].length < 1) {
+                            this.showEmptyItem = true;
+                        }
+                        // this.getCart();
                     });
             }
         });

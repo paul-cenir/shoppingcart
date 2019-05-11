@@ -1,3 +1,4 @@
+@import "../../variables.less";
 @import "../../components/tables/comp-order-detail.less";
 @import "../../components/product-detail/comp-product-detail.less";
 .paul {
@@ -12,6 +13,25 @@
         .order-details {
             display: flex;
             justify-content: space-between;
+        }
+    }
+    &.page-shipment-container {
+        .shipment-header {
+            background: #ddd;
+            display: flex;
+            height: 38px;
+            align-items: center;
+            padding-left: 16px;
+            margin-bottom: 16px;
+            p {
+                margin: 0;
+                color: @brandPrimaryVariantColor;
+                font-weight: 600;
+            }
+        }
+        .shipment-form {
+            max-width: 645px;
+            margin: auto;
         }
     }
 }

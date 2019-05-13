@@ -1,5 +1,5 @@
 <div class="flow-checkout-container page-cart-container">
-    <table class="table comp-order-detail" *ngIf="tableData.bodyData.length >= 1">
+    <!-- <table class="table comp-order-detail" *ngIf="tableData.bodyData.length >= 1">
         <thead>
             <tr>
                 <th>Product</th>
@@ -14,22 +14,9 @@
                         <div>
                             <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row)"
                                 data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                            <img [src]="row.product_thumbnail" alt="Product image">
+                            <app-site-image [imgSrc]="row.product_thumbnail" alt="Product image"></app-site-image>
                         </div>
-
-                        <div class="product-details">
-                            <div class="product-label">
-                                <p>Product Name</p>
-                                <p>Product Description</p>
-                                <p>Price</p>
-                            </div>
-                            <div class="product-data">
-                                <p>{{row.product_name}}</p>
-                                <p>{{row.product_desc}}</p>
-                                <p> {{ ConfigService.currencySign }} {{ row.price | number : ConfigService.priceFormat}}
-                                </p>
-                            </div>
-                        </div>
+                        <app-product-detail [product]="row"></app-product-detail>
                     </div>
                 </td>
                 <td>{{ row.qty }}</td>
@@ -61,7 +48,63 @@
                 </td>
             </tr>
         </tfoot>
-    </table>
+    </table> -->
+    <div class="row-no-padding"  *ngIf="tableData.bodyData.length >= 1">
+        <div class="row table-head">
+            <div class="col-xs-16">
+                <div class="thead-data">
+                    Product
+                </div>
+            </div>
+            <div class="col-xs-4">
+                <div class="thead-data">
+                    Quantity
+                </div>
+            </div>
+            <div class="col-xs-4 custom-align-right">
+                <div class="thead-data">
+                    Price
+                </div>
+            </div>
+        </div>
+        <div class="row table-body" *ngFor="let row of tableData.bodyData">
+            <div class="col-xs-16">
+                <div class="product-section img-container">
+                    <app-site-image [imgSrc]="row.product_thumbnail" alt="Product image"></app-site-image>
+                    <app-product-detail [product]="row"></app-product-detail>
+                </div>
+            </div>
+            <div class="col-xs-4">
+                {{ row.qty }}
+            </div>
+            <div class="col-xs-4 custom-align-right">
+                <div>
+                    {{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}
+                </div>
+            </div>
+        </div>
+        <div class="row table-footer">
+            <div class="col-xs-4 col-xs-offset-20 custom-align-right">
+                <div class="d-flex">
+                    <div>
+                        <p><span>Sub Total:</span>{{ ConfigService.currencySign }}
+                            {{tableData.footerData.sub_total | number : ConfigService.priceFormat}}</p>
+                    </div>
+                    <div>
+                        <p><span>Shipping:</span> {{ ConfigService.currencySign }}
+                            {{tableData.footerData.shipping_total ? (tableData.footerData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}
+                        </p>
+                    </div>
+                    <div>
+                        <p><span>Grand Total:</span>{{ ConfigService.currencySign }}
+                            {{tableData.footerData.total_amount}}</p>
+                    </div>
+                    <button type="submit" (click)="clickEvent()" class="btn site-btn-primary">
+                        {{tableData.footerData.buttonText}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div *ngIf="showEmptyItem">
         <app-empty-page [message]="'Your shopping cart is currently empty.'" [icon]="'glyphicon-shopping-cart'"
             (triggerClick)='goToHomePage($event)'></app-empty-page>

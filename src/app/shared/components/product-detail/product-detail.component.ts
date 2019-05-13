@@ -6,7 +6,7 @@ import { ConfigService } from '../../services/config.service';
   templateUrl: './product-detail.component.html',
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() prdouct: any;
+  @Input() product: any;
   constructor(  private ConfigService: ConfigService) { }
 
   ngOnInit() {

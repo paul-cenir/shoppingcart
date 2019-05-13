@@ -3,7 +3,7 @@ import { ConfigService } from '../../shared/services/config.service';
 import { ProductService } from '../../shared/services/product.service';
 import { Product } from '../../shared/models/product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 
@@ -11,7 +11,8 @@ import { CartService } from 'src/app/shared/services/cart.service';
     selector: 'app-product-details',
     templateUrl: './product-details.component.html',
     styleUrls: ['../../../assets/css_min/page-product-details/page-product-details.min.css'
-        , '../../../assets/css_min/page-product-details/page-product-details_mobile.min.css']
+        , '../../../assets/css_min/page-product-details/page-product-details_mobile.min.css'],
+        encapsulation: ViewEncapsulation.None
 })
 
 export class ProductDetailsComponent implements OnInit {

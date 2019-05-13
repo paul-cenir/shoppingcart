@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ShipmentService } from './shipment.service';
 import { CartService } from 'src/app/shared/services/cart.service';
@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
     selector: 'app-shipment',
     templateUrl: './shipment.component.html',
     styleUrls: ['../../../assets/css_min/flow-checkout/flow-checkout.min.css'
-        , '../../../assets/css_min/flow-checkout/flow-checkout-mobile.min.css']
+        , '../../../assets/css_min/flow-checkout/flow-checkout-mobile.min.css'],
+        encapsulation: ViewEncapsulation.None
 })
 
 export class ShipmentComponent implements OnInit {

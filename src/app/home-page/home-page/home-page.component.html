@@ -3,7 +3,7 @@
         <div *ngIf="products.length >= 1">
             <div routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products"
                 class="comp-product-detail">
-                <div class="product-section">
+                <div class="product-section align-item-center">
                     <div class="p-relative img-container">
                         <span class="sold_out" *ngIf="product.stock_qty < 1">Sold out</span>
                         <app-site-image [imgSrc]="product.product_thumbnail" alt="Product image"></app-site-image>

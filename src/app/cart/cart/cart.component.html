@@ -49,7 +49,7 @@
             </tr>
         </tfoot>
     </table> -->
-    <div class="row-no-padding"  *ngIf="tableData.bodyData.length >= 1">
+    <div class="row-no-padding" *ngIf="tableData.bodyData.length >= 1">
         <div class="row table-head">
             <div class="col-xs-16">
                 <div class="thead-data">
@@ -70,7 +70,12 @@
         <div class="row table-body" *ngFor="let row of tableData.bodyData">
             <div class="col-xs-16">
                 <div class="product-section img-container">
-                    <app-site-image [imgSrc]="row.product_thumbnail" alt="Product image"></app-site-image>
+                    <div>
+                        <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row)"
+                            data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        <app-site-image [imgSrc]="row.product_thumbnail" alt="Product image"></app-site-image>
+                    </div>
+
                     <app-product-detail [product]="row"></app-product-detail>
                 </div>
             </div>
@@ -99,7 +104,7 @@
                         <p><span>Grand Total:</span>{{ ConfigService.currencySign }}
                             {{tableData.footerData.total_amount}}</p>
                     </div>
-                    <button type="submit" (click)="clickEvent()" class="btn site-btn-primary">
+                    <button type="submit" (click)="checkout()" class="btn site-btn-primary">
                         {{tableData.footerData.buttonText}}</button>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <div class="page-product-details-container">
     <div class="product" *ngIf="product">
         <form [formGroup]="cartForm" (ngSubmit)="addCart()">
-                <div class="product-section align-item-center">
+                <div class="global-product-section-container align-item-center">
                         <div class="p-relative">
                             <span class="sold_out" *ngIf="soldOut">Sold out</span>
                             <app-site-image [imgSrc]="product.product_image" alt="Product image"></app-site-image>

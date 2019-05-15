@@ -1,7 +1,7 @@
 <div class="page-home-container">
     <div class="product" *ngIf="products">
         <div *ngIf="products.length >= 1">
-            <div class="product-section home-product-section align-item-center" routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products">
+            <div class="global-product-section-container home-global-product-section-container align-item-center" routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products">
                 <div class="p-relative img-container">
                     <span class="sold_out" *ngIf="product.stock_qty < 1">Sold out</span>
                     <app-site-image [imgSrc]="product.product_thumbnail" alt="Product image"></app-site-image>

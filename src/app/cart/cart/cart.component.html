@@ -1,55 +1,5 @@
 <div class="flow-checkout-container page-cart-container">
-    <!-- <table class="table comp-order-detail" *ngIf="tableData.bodyData.length >= 1">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let row of tableData.bodyData">
-                <td>
-                    <div class="product-section">
-                        <div>
-                            <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row)"
-                                data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
-                            <app-site-image [imgSrc]="row.product_thumbnail" alt="Product image"></app-site-image>
-                        </div>
-                        <app-product-detail [product]="row"></app-product-detail>
-                    </div>
-                </td>
-                <td>{{ row.qty }}</td>
-                <td>{{ ConfigService.currencySign }} {{ row.sub_total | number : ConfigService.priceFormat}}</td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td></td>
-                <td></td>
-                <td>
-                    <div class="d-flex">
-                        <div>
-                            <p><span>Sub Total:</span>{{ ConfigService.currencySign }}
-                                {{tableData.footerData.sub_total | number : ConfigService.priceFormat}}</p>
-                        </div>
-                        <div>
-                            <p><span>Shipping:</span> {{ ConfigService.currencySign }}
-                                {{tableData.footerData.shipping_total ? (tableData.footerData.shipping_total  | number : ConfigService.priceFormat) : 0.00   }}
-                            </p>
-                        </div>
-                        <div>
-                            <p><span>Grand Total:</span>{{ ConfigService.currencySign }}
-                                {{tableData.footerData.total_amount}}</p>
-                        </div>
-                        <button type="submit" (click)="checkout()" class="btn site-btn-primary">
-                            {{tableData.footerData.buttonText}}</button>
-                    </div>
-                </td>
-            </tr>
-        </tfoot>
-    </table> -->
-    <div class="row-no-padding" *ngIf="tableData.bodyData.length >= 1">
+    <div class="row-no-padding comp-order-detail-container" *ngIf="tableData.bodyData.length >= 1">
         <div class="row table-head">
             <div class="col-xs-16">
                 <div class="thead-data">
@@ -70,7 +20,7 @@
         <div class="row table-body" *ngFor="let row of tableData.bodyData">
             <div class="col-xs-16">
                 <div class="product-section img-container">
-                    <div>
+                    <div class="flex-align-center">
                         <button class="btn btn-danger btn-xs delete-btn" (click)="openModal(row)"
                             data-title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
                         <app-site-image [imgSrc]="row.product_thumbnail" alt="Product image"></app-site-image>

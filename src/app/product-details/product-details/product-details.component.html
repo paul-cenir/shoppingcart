@@ -1,47 +1,45 @@
 <div class="page-product-details-container">
     <div class="product" *ngIf="product">
         <form [formGroup]="cartForm" (ngSubmit)="addCart()">
-            <div class="comp-product-detail">
                 <div class="product-section align-item-center">
-                    <div class="p-relative">
-                        <span class="sold_out" *ngIf="soldOut">Sold out</span>
-                        <app-site-image [imgSrc]="product.product_image" alt="Product image"></app-site-image>
-                    </div>
-                    <div class="product-details">
-                        <div class="product-label">
-                            <p>Product Name</p>
-                            <p>Product Description</p>
-                            <p>Unit Price</p>
-                            <div class="form-group quantity-min-height">
-                                <p>Quantity</p>
-                            </div>
-                            <p>Price</p>
+                        <div class="p-relative">
+                            <span class="sold_out" *ngIf="soldOut">Sold out</span>
+                            <app-site-image [imgSrc]="product.product_image" alt="Product image"></app-site-image>
                         </div>
-                        <div class="product-data">
-                            <p>{{product.product_name}}</p>
-                            <p>{{product.product_desc}}</p>
-                            <p>{{ ConfigService.currencySign }} {{ product.price | number : ConfigService.priceFormat}}
-                            </p>
-                            <div class="form-group quantity-min-height"
-                                [ngClass]="{ 'has-error': (isSubmitted && formControls.qty.errors) || insufficientStock }">
-                                <input type="number" name="quantity" class="form-control" formControlName="qty"
-                                    [(ngModel)]="productQuantity" (ngModelChange)="changeQuantity($event)"
-                                    [attr.disabled]="soldOut ? '' : null">
-                                <div *ngIf="isSubmitted && formControls.qty.errors" class="help-block">
-                                    <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
+                        <div class="comp-product-detail-container">
+                            <div class="product-label">
+                                <p>Product Name</p>
+                                <p>Product Description</p>
+                                <p>Unit Price</p>
+                                <div class="form-group quantity-min-height">
+                                    <p>Quantity</p>
                                 </div>
-                                <div *ngIf="insufficientStock && !formControls.qty.errors" class="help-block">
-                                    <div *ngIf="insufficientStock">
-                                        The quantity on inventory is not sufficient
+                                <p>Price</p>
+                            </div>
+                            <div class="product-data">
+                                <p>{{product.product_name}}</p>
+                                <p>{{product.product_desc}}</p>
+                                <p>{{ ConfigService.currencySign }} {{ product.price | number : ConfigService.priceFormat}}
+                                </p>
+                                <div class="form-group quantity-min-height"
+                                    [ngClass]="{ 'has-error': (isSubmitted && formControls.qty.errors) || insufficientStock }">
+                                    <input type="number" name="quantity" class="form-control" formControlName="qty"
+                                        [(ngModel)]="productQuantity" (ngModelChange)="changeQuantity($event)"
+                                        [attr.disabled]="soldOut ? '' : null">
+                                    <div *ngIf="isSubmitted && formControls.qty.errors" class="help-block">
+                                        <div *ngIf="formControls.qty.errors.required">Quantity is required</div>
+                                    </div>
+                                    <div *ngIf="insufficientStock && !formControls.qty.errors" class="help-block">
+                                        <div *ngIf="insufficientStock">
+                                            The quantity on inventory is not sufficient
+                                        </div>
                                     </div>
                                 </div>
+                                <p>{{ ConfigService.currencySign }} {{ price | number : ConfigService.priceFormat}}</p>
+                                <button type="submit" class="btn site-btn-primary" [disabled]="soldOut">Add to Cart</button>
                             </div>
-                            <p>{{ ConfigService.currencySign }} {{ price | number : ConfigService.priceFormat}}</p>
-                            <button type="submit" class="btn site-btn-primary" [disabled]="soldOut">Add to Cart</button>
                         </div>
                     </div>
-                </div>
-            </div>
         </form>
     </div>
 </div>

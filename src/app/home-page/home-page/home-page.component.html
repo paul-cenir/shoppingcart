@@ -1,15 +1,12 @@
 <div class="page-home-container">
     <div class="product" *ngIf="products">
         <div *ngIf="products.length >= 1">
-            <div routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products"
-                class="comp-product-detail">
-                <div class="product-section align-item-center">
-                    <div class="p-relative img-container">
-                        <span class="sold_out" *ngIf="product.stock_qty < 1">Sold out</span>
-                        <app-site-image [imgSrc]="product.product_thumbnail" alt="Product image"></app-site-image>
-                    </div>
-                    <app-product-detail [product]="product"></app-product-detail>
+            <div class="product-section home-product-section align-item-center" routerLink="/product-details/{{product.product_id}}" *ngFor="let product of products">
+                <div class="p-relative img-container">
+                    <span class="sold_out" *ngIf="product.stock_qty < 1">Sold out</span>
+                    <app-site-image [imgSrc]="product.product_thumbnail" alt="Product image"></app-site-image>
                 </div>
+                <app-product-detail [product]="product"></app-product-detail>
             </div>
         </div>
     </div>
